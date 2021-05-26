@@ -56,6 +56,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('jenjang-pendidikan', 'Master\JenjangPendidikanController@store');
             Route::put('jenjang-pendidikan', 'Master\JenjangPendidikanController@update');
             Route::delete('jenjang-pendidikan', 'Master\JenjangPendidikanController@destroy');
+
+            // Kategori jasa
+            Route::get('kategori-jasa','Master\KategoriController@index');
+            Route::get('kategori-jasa/load', 'Master\KategoriController@load_table');
+            Route::post('kategori-jasa', 'Master\KategoriController@store');
+            Route::put('kategori-jasa', 'Master\KategoriController@update');
+            Route::delete('kategori-jasa', 'Master\KategoriController@destroy');
         });
     });
 

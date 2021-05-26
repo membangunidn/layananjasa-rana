@@ -1,7 +1,6 @@
 @extends('app.front')
 
 @section('content')
-
 <div class="subheader py-2 py-lg-6 subheader-transparent bg-white">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
@@ -12,10 +11,10 @@
                         <a href="" class="text-muted">Master</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Jenjang Pendidikan</a>
+                        <a href="" class="text-muted">Kategori Jasa</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Daftar Jenjang Pendidikan</a>
+                        <a href="" class="text-muted">Daftar Kategori Jasa</a>
                     </li>
                 </ul>
             </div>
@@ -26,13 +25,13 @@
 <div class="d-flex flex-column-fluid">
     <div class="container mt-10">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <div class="card card-custom">
                     <div class="card-header">
                         <div class="card-toolbar float-right">
                             <button id="tombol_tambah" class="btn btn-light-primary font-weight-bolder">
-                                <i class="la la-plus"></i>Tambah Jenjang</button>
+                                <i class="la la-plus"></i>Tambah Kategori</button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -42,7 +41,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Kode</th>
-                                        <th>Jenjang Pendidikan</th>
+                                        <th>Kategori Layanan Jasa</th>
                                         <th>Aksi</th>
                                     </tr>                            
                                 </thead>
@@ -71,16 +70,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kode Jenjang
+                        <label>Kode Kategori
                         <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="i_kodejenjang" id="i_kodejenjang" placeholder="Masukkan Kode Jenjang Pendidikan">
-                        <span class="fv-help-block i_kodejenjang" style="color:red"></span>
+                        <input type="text" class="form-control" name="i_kodekategori" id="i_kodekategori" placeholder="Masukkan Kode Kategori">
+                        <span class="fv-help-block i_kodekategori" style="color:red"></span>
                     </div>
                     <div class="form-group">
-                        <label>Jenjang Pendidikan
+                        <label>Kategori Layanan Jasa
                         <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="i_jenjangpendidikan" id="i_jenjangpendidikan" placeholder="Masukkan Nama Jenjang Pendidikan">
-                        <span class="fv-help-block i_jenjangpendidikan" style="color:red"></span>
+                        <input type="text" class="form-control" name="i_kategorijasa" id="i_kategorijasa" placeholder="Masukkan Nama Kategori Jasa">
+                        <span class="fv-help-block i_kategorijasa" style="color:red"></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -114,7 +113,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @push('js')
@@ -129,11 +127,11 @@
             var table = $('#table-ss').DataTable({
                 serverSide: true,
                 processing: true,
-                ajax: url + 'master/jenjang-pendidikan/load',
+                ajax: url + 'master/kategori-jasa/load',
                 columns: [
                     {data: 'DT_RowIndex'},
-                    {data: 'kodejenjang'},
-                    {data: 'jenjangpendidikan'},
+                    {data: 'kodekategori'},
+                    {data: 'kategorijasa'},
                     {data: 'aksi', orderable: false, searchable: false}
                 ],
                 language: {
@@ -147,7 +145,7 @@
             $('#tombol_tambah').click(function() {
                 $('#form_tambah').trigger("reset");
                 $('#modal_tambah').modal('show')
-                $('#modal_title').text('Form Jenjang Pendidikan')
+                $('#modal_title').text('Form Kategori Jasa')
                 $('.fv-help-block').text(null);
             })
 
@@ -158,7 +156,7 @@
                 // simpan data
                 if(act == 'add') {
                     $.ajax({
-                        url: url + 'master/jenjang-pendidikan',
+                        url: url + 'master/kategori-jasa',
                         type: "POST",
                         data: $('#form_tambah').serialize(),
                         success: function(response) {
@@ -169,8 +167,8 @@
                                 toastr.success(response.msg, "Sukses");
                                 table.draw()
                             } else {
-                                $('.i_kodejenjang').text(response.msg.i_kodejenjang ? response.msg.i_kodejenjang[0] : null)
-                                $('.i_jenjangpendidikan').text(response.msg.i_jenjangpendidikan ? response.msg.i_jenjangpendidikan[0] : null)
+                                $('.i_kodekategori').text(response.msg.i_kodekategori ? response.msg.i_kodekategori[0] : null)
+                                $('.i_kategorijasa').text(response.msg.i_kategorijasa ? response.msg.i_kategorijasa[0] : null)
                             }
                         },
                         error: function (data) {
@@ -181,7 +179,7 @@
                 // ubah data
                 else {
                     $.ajax({
-                        url: url + 'master/jenjang-pendidikan',
+                        url: url + 'master/kategori-jasa',
                         type: "PUT",
                         data: $('#form_tambah').serialize(),
                         success: function(response) {
@@ -192,8 +190,8 @@
                                 toastr.success(response.msg, "Sukses");
                                 table.draw()
                             } else {
-                                $('.i_kodejenjang').text(response.msg.i_kodejenjang ? response.msg.i_kodejenjang[0] : null)
-                                $('.i_jenjangpendidikan').text(response.msg.i_jenjangpendidikan ? response.msg.i_jenjangpendidikan[0] : null)
+                                $('.i_kodekategori').text(response.msg.i_kodekategori ? response.msg.i_kodekategori[0] : null)
+                                $('.i_kategorijasa').text(response.msg.i_kategorijasa ? response.msg.i_kategorijasa[0] : null)
                             }
                         },
                         error: function (data) {
@@ -208,18 +206,18 @@
                 $('#form_edit').trigger("reset");
                 $('#modal_tambah').modal('show')
                 $('.fv-help-block').text(null);
-                $('#modal_title').text('Form Update Jenjang Pendidikan')
+                $('#modal_title').text('Form Update Kategori Jasa')
 
                 $('#val_kodekue').attr('disabled', true);
 
                 $('#tombol-submit').remove('#tombol_simpan')
                 
-                const i_kodejenjang = $(this).data('kodejenjang');
-                const i_jenjangpendidikan = $(this).data('jenjangpendidikan');
+                const i_kodekategori = $(this).data('kodekategori');
+                const i_kategorijasa = $(this).data('kategorijasa');
                 const id = $(this).data('id');
 
-                $('#i_kodejenjang').val(i_kodejenjang)
-                $('#i_jenjangpendidikan').val(i_jenjangpendidikan)
+                $('#i_kodekategori').val(i_kodekategori)
+                $('#i_kategorijasa').val(i_kategorijasa)
                 $('#id').val(id)
                 $('#act').val('edit');
 
@@ -237,7 +235,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url: url + 'master/jenjang-pendidikan',
+                    url: url + 'master/kategori-jasa',
                     type: "DELETE",
                     data: $('#form_hapus').serialize(),
                     success: function(response) {
