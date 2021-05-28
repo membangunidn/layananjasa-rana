@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
     Route::get('ye', 'AuthController@ye');
 
+    // yang akses bisa ketiganya
     Route::group(['middleware' => ['CekRole:ADMIN,BUYER,SELLER']], function () {
         Route::prefix('akun')->group(function(){
             Route::get('informasi-personal', 'InformasiPersonalController@index');
@@ -63,6 +64,21 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('kategori-jasa', 'Master\KategoriController@store');
             Route::put('kategori-jasa', 'Master\KategoriController@update');
             Route::delete('kategori-jasa', 'Master\KategoriController@destroy');
+        });
+    });
+
+    // yang akses hanya admin dan seller
+    Route::group(['middleware' => ['CekRole:ADMIN,SELLER']], function() {
+        Route::prefix('seller')->group(function(){
+
+            Route::get('add-layananjasa', 'layananJasaController@add');
+            Route::post('add-layananjasa', 'layananJasaController@store');
+            Route::get('layananjasa/load', 'layananJasaController@load_table');
+            Route::get('layananjasa/isaktif', 'layananJasaController@isaktif');
+            Route::get('layananjasa', 'layananJasaController@list');
+            Route::delete('layananjasa', 'layananJasaController@destroy');
+            Route::get('detail-layananjasa/{id}', 'layananJasaController@detail');
+            Route::put('detail-layananjasa/{id}', 'layananJasaController@update');
         });
     });
 

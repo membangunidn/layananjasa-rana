@@ -24,7 +24,7 @@ class CekRole
         if(in_array(Auth::user()->role->role, $roles)) {
             return $next($request);
         }
-        return redirect('login');
+        return redirect('sign_in');
         
     }
 }

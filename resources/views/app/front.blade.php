@@ -40,22 +40,22 @@
                             </a>
             
                             <div class="d-flex flex-wrap align-items-center mt-1 ml-5 ml-lg-20 font-weight-bold">
-                                <a href="https://keenthemes.com/faqs" class="mr-3 mr-lg-5">
+                                <a href="#" class="mr-3 mr-lg-5">
                                     FAQs
                                 </a>
-                                <a href="https://keenthemes.com/licenses" class="mr-3 mr-lg-5">
+                                <a href="#" class="mr-3 mr-lg-5">
                                     Licenses
                                 </a>
-                                <a href="https://keenthemes.com/faqs#support" class="mr-3 mr-lg-5">
+                                <a href="#" class="mr-3 mr-lg-5">
                                     Support
                                 </a>
-                                <a href="https://keenthemes.com/terms" class="mr-3 mr-lg-5">
+                                <a href="#" class="mr-3 mr-lg-5">
                                     Terms
                                 </a>
-                                <a href="https://keenthemes.com/privacy" class="mr-3 mr-lg-5">
+                                <a href="#" class="mr-3 mr-lg-5">
                                     Privacy
                                 </a>
-                                <a href="https://keenthemes.com/refund-policy" class="mr-0 mr-lg-5">
+                                <a href="#" class="mr-0 mr-lg-5">
                                     Refund
                                 </a>
                             </div>

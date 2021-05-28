@@ -9,7 +9,6 @@
         <div class="login-content mt-10">
             <div class="d-flex flex-column-fluid flex-center">
                 <div class="login-form login-signin">
-                    @include('components.flashmsg')
                     <form method="post" id="form_signin">
                         @csrf
                         <div class="pb-13 pt-lg-0 pt-5">
@@ -65,16 +64,18 @@
         $('#buttonlogin').click(function(e){
             e.preventDefault()
 
+            mm.blok();
+
             $.ajax({
                 url : url + 'sign_in',
                 type : "POST",
                 data : $('#form_signin').serialize(),
                 success : function(res) {
                     if(res.status == true) {
-                        // console.log(res)
                         location.href = url + 'akun/informasi-personal'
+                        mm.unblok()
                     } else {
-                        var html = `<div class="alert alert-custom alert-outline-2x alert-outline-primary fade show mb-5" role="alert">
+                        var html = `<div class="alert alert-custom alert-outline-2x alert-outline-danger fade show mb-5" role="alert">
                             <div class="alert-icon"><i class="flaticon-warning"></i></div>
                             <div class="alert-text">Email dan Password kamu salah!</div>
                             <div class="alert-close">
@@ -84,6 +85,7 @@
                             </div>
                         </div>`
                         $('#notifikasi').html(html)
+                        mm.unblok()
                     }
                 },
                 error : function(err) {
