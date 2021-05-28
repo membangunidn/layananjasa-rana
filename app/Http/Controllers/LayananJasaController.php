@@ -39,10 +39,23 @@ class LayananJasaController extends Controller
             })
             ->addColumn('gambar', function ($jasa) {
                 $img = url('jasa').'/'.$jasa->displaylayanan;
-                $gambar = '
-                <div class="symbol symbol-50 symbol-lg-120">
-                            <img style="border-radius:5px;" src="'.$img.'" alt="image" width="120" height="80">
-                        </div>';
+                $gambar = 
+                    '<span style="width: 250px;">
+                        <div class="d-flex align-items-center">     
+                            <div class="symbol symbol-50 symbol-sm flex-shrink-0">                
+                                <div class="symbol-label">                                
+                                    <img class="align-self-end" style="border-radius:5px;" width="120" height="80" src="'.$img.'"alt="photo">                            
+                            </div>                        
+                        </div>                        
+                        <a href="#" class="text-muted font-weight-bold text-hover-primary">                   
+                        <div class="ml-4">                            
+                                    <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
+                                        '.$jasa->layanan.'
+                                    </div>                       
+                                </div>     
+                            </a>               
+                        </div>
+                    </span>';
                 return $gambar;
             })
             ->editColumn('isaktif', function($jasa) {

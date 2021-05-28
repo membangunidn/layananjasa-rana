@@ -37,8 +37,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Display</th>
-                                <th>Informasi Jasa</th>
+                                <th>Informasi Layanan Jasa</th>
                                 <th>Kategori</th>
                                 <th>Harga</th>
                                 <th>Aktif</th>
@@ -74,7 +73,6 @@
                 columns: [
                     {data: 'DT_RowIndex'},
                     {data: 'gambar'},
-                    {data: 'layanan'},
                     {data: 'kategorijasa'},
                     {data: 'hargalayanan'},
                     {data: 'isaktif'},
