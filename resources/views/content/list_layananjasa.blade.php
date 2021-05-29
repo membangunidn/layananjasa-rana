@@ -25,12 +25,6 @@
 <div class="d-flex flex-column-fluid">
     <div class="container mt-10">
         <div class="card card-custom">
-            <div class="card-header">
-                <div class="card-toolbar float-right">
-                    <button id="tombol_tambah" class="btn btn-light-primary font-weight-bolder">
-                        <i class="la la-plus"></i>Tambah Kategori</button>
-                </div>
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-borderless table-hover" id="table-ss">

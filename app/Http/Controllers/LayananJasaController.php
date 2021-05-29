@@ -47,7 +47,7 @@ class LayananJasaController extends Controller
                                     <img class="align-self-end" style="border-radius:5px;" width="120" height="80" src="'.$img.'"alt="photo">                            
                             </div>                        
                         </div>                        
-                        <a href="#" class="text-muted font-weight-bold text-hover-primary">                   
+                        <a href="'.url('seller/detail-layananjasa').'/'.$jasa->slug.'" class="text-muted font-weight-bold text-hover-primary">                   
                         <div class="ml-4">                            
                                     <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">
                                         '.$jasa->layanan.'
@@ -140,6 +140,7 @@ class LayananJasaController extends Controller
             'deskripsilayanan' => $request->i_deskripsilayanan,
             'hargalayanan' => $request->i_harga,
             'isaktif' => $request->i_isaktif == 1 ? 1 : 0,
+            'slug' => strtolower(str_replace(" ", "-", $request->i_layanan)),
             'created_at' => $this->date()
         ];
 
@@ -158,5 +159,10 @@ class LayananJasaController extends Controller
             LayananJasa::insert($param);
             return redirect('seller/add-layananjasa')->with('sukses', 'Berhasil menambahkan layanan jasa');
         }
+    }
+
+    public function detail(Request $request, $slug) {
+        $layanan = LayananJasa::where('slug', $slug)->first();
+        Yin::debug($layanan);
     }
 }

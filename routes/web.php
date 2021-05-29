@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
     
             Route::get('informasi-akun', 'InformasiAkunController@index');
             Route::put('informasi-akun', 'InformasiAkunController@update');
+
+            Route::get('menjadi-penyedia-jasa', 'InformasiPersonalController@list_menjadipenyediajasa');
+            Route::post('menjadi-penyedia-jasa', 'InformasiPersonalController@store_menjadipenyediajasa');
     
         });
     });
@@ -77,8 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('layananjasa/isaktif', 'layananJasaController@isaktif');
             Route::get('layananjasa', 'layananJasaController@list');
             Route::delete('layananjasa', 'layananJasaController@destroy');
-            Route::get('detail-layananjasa/{id}', 'layananJasaController@detail');
-            Route::put('detail-layananjasa/{id}', 'layananJasaController@update');
+            Route::get('detail-layananjasa/{slug}', 'layananJasaController@detail');
+            Route::put('detail-layananjasa/{slug}', 'layananJasaController@update');
         });
     });
 
