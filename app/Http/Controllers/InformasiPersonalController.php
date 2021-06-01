@@ -12,6 +12,8 @@ use Exception;
 use Validator;
 use App\Helpers\Yin;
 use App\Biodata;
+use App\Lokasi;
+use App\Jenpen;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -69,7 +71,9 @@ class InformasiPersonalController extends Controller
     /** Menjadi Penyedia Jasa */
 
     public function list_menjadipenyediajasa() {
-        return view('content.list_menjadipenyediajasa');
+        $lokasi = Lokasi::orderBy('lokasi', 'asc')->get();
+        $jenpen = Jenpen::all();
+        return view('content.list_menjadipenyediajasa', compact('jenpen'));
     }
 
     public function store_menjadipenyediajasa(Request $request) {

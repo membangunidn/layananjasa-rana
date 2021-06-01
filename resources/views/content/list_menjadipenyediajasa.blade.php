@@ -45,15 +45,13 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 col-form-label">Alamat Lengkap <span class="text-danger">*</span></label>
                             <div class="col-lg-9 col-xl-6">
-                                <textarea class="form-control form-control-lg" 
-                                    name="i_alamatlengkap" id="" cols="30" rows="5">
-                                </textarea>
+                                <textarea class="summernote" id="kt_summernote_1"name="i_alamatlengkap"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 col-form-label">Domisili Kota <span class="text-danger">*</span></label>
                             <div class="col-lg-9 col-xl-6">
-                               <select name="i_domisili" class="form-control form-control-lg" id="">
+                               <select name="i_domisili" class="form-control" id="domisilikota">
                                    <option value="">--Pilih Domisili Kota --</option>
                                </select>
                             </div>
@@ -61,7 +59,7 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 col-form-label">Pendidikan Terakhir<span class="text-danger">*</span></label>
                             <div class="col-lg-9 col-xl-6">
-                               <select name="i_pendidikanterakhir" class="form-control form-control-lg" id="">
+                               <select name="i_pendidikanterakhir" class="form-control form-control-lg" id="jenjanpendidikan">
                                    <option value="">--Pilih Pendidikan Terakhir --</option>
                                </select>
                             </div>
@@ -85,7 +83,7 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 col-form-label">Pengalaman Kerja<span class="text-danger">*</span></label>
                             <div class="col-lg-9 col-xl-6">
-                                <textarea name="i_pengalamankerja" class="form-control form-control-l" id="" cols="30" rows="5"></textarea>
+                                <textarea name="i_pengalamankerja" class="form-control summernote" id="kt_summernote_1" cols="10" rows="1"></textarea>
                             </div>
                         </div>
 
@@ -118,3 +116,50 @@
     </div>  
 
 @endsection
+
+@push('js')
+<script src="{{asset('assets/js/pages/crud/forms/editors/summernote.js')}}"></script>
+<script src="{{asset('assets/js/pages/crud/forms/widgets/select2.js')}}"></script>
+
+<script>
+    $('#domisilikota').select2({
+        ajax: { 
+            url: url + 'ajax/cari_lokasi',
+            type: "get",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                cari: params.term // search term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    }); 
+
+    $('#jenjanpendidikan').select2({
+        ajax: { 
+            url: url + 'ajax/cari_pendidikan',
+            type: "get",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                cari: params.term // search term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    }); 
+</script>
+@endpush

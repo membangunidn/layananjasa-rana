@@ -28,6 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
     Route::get('ye', 'AuthController@ye');
 
+    // request ajax
+    Route::prefix('ajax')->group(function(){
+        Route::get('cari_lokasi', 'AjaxController@cari_lokasi');
+        Route::get('cari_pendidikan', 'AjaxController@cari_pendidikan');
+
+    });
+
     // yang akses bisa ketiganya
     Route::group(['middleware' => ['CekRole:ADMIN,BUYER,SELLER']], function () {
         Route::prefix('akun')->group(function(){
