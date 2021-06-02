@@ -59,6 +59,11 @@
                                             <span class="menu-text">Kategori Jasa</span>
                                         </a>
                                     </li>
+                                    <li class="menu-item {{Request::segment(2) == 'jenis-keahlian' ? 'menu-item-active' : null }}">
+                                        <a href="{{url('master/jenis-keahlian')}}" class="menu-link">
+                                            <span class="menu-text">Jenis Keahlian</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -137,7 +142,7 @@
                 <li class="topbar-wrapper dropdown dropdown-hover">
                     <div class="topbar-item topbar-item-user cursor-pointer" data-toggle="dropdown">    
                         <span class="avatar">
-                            <img alt="photo" src="{{Auth::user()->biodata->avatar != null ? url('avatar/'.Auth::user()->biodata->avatar) : url('assets/media/users/blank.png')}}">
+                            <img alt="photo" src="{{Auth::user()->biodata->avatar != null ? url('uploads/avatar/'.Auth::user()->biodata->avatar) : url('assets/media/users/blank.png')}}">
                         </span>      
                     </div>
                     <div class="dropdown-menu dropdown-menu-anim-up dropdown-menu-right dropdown-menu-md p-0">

@@ -32,22 +32,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('ajax')->group(function(){
         Route::get('cari_lokasi', 'AjaxController@cari_lokasi');
         Route::get('cari_pendidikan', 'AjaxController@cari_pendidikan');
+        Route::get('cari_jeniskeahlian', 'AjaxController@cari_jeniskeahlian');
+        Route::post('popup_pdfsertifikasi', 'AjaxController@popup_pdfsertifikasi');
 
     });
 
     // yang akses bisa ketiganya
-    Route::group(['middleware' => ['CekRole:ADMIN,BUYER,SELLER']], function () {
-        Route::prefix('akun')->group(function(){
-            Route::get('informasi-personal', 'InformasiPersonalController@index');
-            Route::put('informasi-personal', 'InformasiPersonalcontroller@update');
-    
-            Route::get('informasi-akun', 'InformasiAkunController@index');
-            Route::put('informasi-akun', 'InformasiAkunController@update');
+    Route::prefix('akun')->group(function(){
+        Route::get('informasi-personal', 'InformasiPersonalController@index');
+        Route::put('informasi-personal', 'InformasiPersonalcontroller@update');
 
-            Route::get('menjadi-penyedia-jasa', 'InformasiPersonalController@list_menjadipenyediajasa');
-            Route::post('menjadi-penyedia-jasa', 'InformasiPersonalController@store_menjadipenyediajasa');
-    
-        });
+        Route::get('informasi-akun', 'InformasiAkunController@index');
+        Route::put('informasi-akun', 'InformasiAkunController@update');
+
     });
 
     // yang akses hanya admin
@@ -74,6 +71,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('kategori-jasa', 'Master\KategoriController@store');
             Route::put('kategori-jasa', 'Master\KategoriController@update');
             Route::delete('kategori-jasa', 'Master\KategoriController@destroy');
+
+            // Jenis Keahlian
+            Route::get('jenis-keahlian','Master\JenisKeahlianController@index');
+            Route::get('jenis-keahlian/load', 'Master\JenisKeahlianController@load_table');
+            Route::post('jenis-keahlian', 'Master\JenisKeahlianController@store');
+            Route::put('jenis-keahlian', 'Master\JenisKeahlianController@update');
+            Route::delete('jenis-keahlian', 'Master\JenisKeahlianController@destroy');
         });
     });
 
@@ -90,6 +94,12 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('detail-layananjasa/{slug}', 'layananJasaController@detail');
             Route::put('detail-layananjasa/{slug}', 'layananJasaController@update');
         });
+    });
+
+    // yang akses hanya buyer
+    Route::group(['middleware' => ['CekRole:BUYER']], function(){
+        Route::get('akun/menjadi-penyedia-jasa', 'InformasiPersonalController@list_menjadipenyediajasa');
+        Route::put('akun/menjadi-penyedia-jasa', 'InformasiPersonalController@store_menjadipenyediajasa');
     });
 
 });

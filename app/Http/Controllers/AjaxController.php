@@ -17,6 +17,7 @@ use App\Jenpen;
 use App\User;
 use App\LayananJasa;
 use App\Kategori;
+use App\JenisKeahlian;
 
 
 class AjaxController extends Controller
@@ -55,5 +56,27 @@ class AjaxController extends Controller
         }
 
         return response()->json($a_data, 201);
+    }
+
+    public function cari_jeniskeahlian(Request $request) {
+        if(!$request->ajax()) {
+            abort(404);
+        }
+
+        $keyword = $request->cari;
+        $jk = JenisKeahlian::where('jeniskeahlian', 'LIKE', '%'.$keyword. '%')
+            ->orderBy('idkeahlian', 'asc')->limit(15)->get();
+
+        $a_data = [];
+        foreach($jk as $i => $v) {
+            $a_data[] = array("id"=>$v->idkeahlian, "text"=>$v->jeniskeahlian);
+        }
+
+        return response()->json($a_data, 201);
+    }
+
+    public function popup_pdfsertifikasi(Request $request) {
+        $data = Biodata::where('iduser', $request->iduser)->first();
+        return view('popup.preview_pdf_sertifikasi', compact('data'));
     }
 }

@@ -5,7 +5,7 @@
                 <div class="d-flex mb-9">
                     <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
                         <div class="symbol symbol-50 symbol-lg-120">
-                            <img style="border-radius:5px;" src="{{Auth::user()->biodata->avatar != null ? url('avatar/'.Auth::user()->biodata->avatar) : url('assets/media/users/blank.png')}}" alt="image" width="120" height="120">
+                            <img style="border-radius:5px;" src="{{Auth::user()->biodata->avatar != null ? url('uploads/avatar/'.Auth::user()->biodata->avatar) : url('assets/media/users/blank.png')}}" alt="image" width="120" height="120">
                         </div>
                     </div>
                     <div class="flex-grow-1">
@@ -70,6 +70,9 @@
                             <span class="font-weight-bolder font-size-sm">Riwayat Pesanan</span>
                         </div>
                     </div>
+
+                    {{-- jika rolenya adalah user --}}
+                    @if (Auth::user()->idrole == 3)
                     <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">
                             <i class="{{Request::segment(2) == 'penyedia-jasa' ? 'text-primary' : 'text-muted'}} flaticon-folder display-4 font-weight-bold"></i>
@@ -80,6 +83,10 @@
                             </div>
                         </a>
                     </div>
+                        
+                    @else
+                        
+                    @endif
                     {{-- <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">
                             <i class="{{Request::segment(2) == 'ganti-password' ? 'text-primary' : 'text-muted'}} flaticon-settings display-4 font-weight-bold"></i>

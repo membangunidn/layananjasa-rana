@@ -15,6 +15,8 @@ use App\Biodata;
 use App\Lokasi;
 use App\Jenpen;
 
+use App\Helpers\Cstm;
+
 use Illuminate\Support\Facades\Storage;
 
 class InformasiPersonalController extends Controller
@@ -48,14 +50,14 @@ class InformasiPersonalController extends Controller
         if($request->file('i_avatar') != null){
 
             $cekimage = Biodata::where('iduser', Auth::user()->id)->first();
-            if(File::exists(public_path('avatar/'.$cekimage->avatar))){
-                File::delete(public_path('avatar/'.$cekimage->avatar));
+            if(File::exists(public_path('uploads/avatar/'.$cekimage->avatar))){
+                File::delete(public_path('uploadsavatar/'.$cekimage->avatar));
             }
 
 
             $image = $request->file('i_avatar');
             $image_name = 'PXL-'.time().'.'.$image->getClientOriginalExtension();
-            $image->move(\base_path() ."/public/avatar", $image_name);
+            $image->move(\base_path() ."/public/uploads/avatar", $image_name);
 
             $paramUpdate['avatar'] = $image_name;
             Biodata::where('iduser', Auth::user()->id)->update($paramUpdate);
@@ -71,49 +73,57 @@ class InformasiPersonalController extends Controller
     /** Menjadi Penyedia Jasa */
 
     public function list_menjadipenyediajasa() {
-        $lokasi = Lokasi::orderBy('lokasi', 'asc')->get();
-        $jenpen = Jenpen::all();
-        return view('content.list_menjadipenyediajasa', compact('jenpen'));
+        $biodata = Cstm::getBiodataPengajuan(Auth::user()->id);
+        return view('content.list_menjadipenyediajasa', compact('biodata'));
     }
 
     public function store_menjadipenyediajasa(Request $request) {
         $validate = [
             'i_nik' => 'NIK',
-            'i_npwp' => 'Jenis Kelamin',
-            'i_alamatlengkap' => 'Nomor HP',
+            'i_npwp' => 'NPWP',
+            'i_alamatlengkap' => 'Alamat Lengkap',
             'i_domisilikota' => 'Domisili Kota',
             'i_pendidikanterakhir' => 'Pendidikan Terakhir',
             'i_jeniskeahlian' => 'Jenis Keahlian',
             'i_pengalamankerja' => 'Pengalaman Kerja',
+            'i_domisili' => 'Domisili Kota',
+            'i_sertifikasi' => 'Sertifikasi',
+            'i_nomorhp' => 'Nomor Handphone'
         ];
         
         $this->validate($request, [
-            'i_sertifikasi' => 'image|nullable|max:2048',
+            'i_sertifikasi' => 'required|mimes:pdf|nullable|max:5000',
             'i_nik' => 'required|min:13|numeric',
-            'i_npwp' => 'required',
+            'i_npwp' => 'required|min:14|numeric',
             'i_alamatlengkap' => 'required',
-            'i_domisilikota' => 'required',
+            'i_domisili' => 'required',
             'i_pendidikanterakhir' => 'required',
             'i_jeniskeahlian' => 'required',
             'i_pengalamankerja' => 'required',
+            'i_nomorhp' => 'required|min:11'
         ], Yin::Check(), $validate);
 
         $paramUpdate = [
             'nik' => $request->i_nik,
             'npwp' => $request->i_npwp,
-            'alamatlengkap' => $request->i_alamatlengkap,
-            'idlokasi' => $request->i_domisilikota,
-            'idjenjang' => $request->i_jenjangpendidikan,
-            'idjeniskeahlian' => $request->i_jeniskeahlian,
+            'alamat' => $request->i_alamatlengkap,
+            'idlokasi' => $request->i_domisili,
+            'idjenjang' => $request->i_pendidikanterakhir,
             'pengalamankerja' => $request->i_pengalamankerja,
+            'idkeahlian' => $request->i_jeniskeahlian,
+            'notelp' => $request->i_nomorhp,
             'isajukan' => 1,
             'updated_at' => $this->date()
         ];
 
-        if($request->file('i_sertifikasi')) {
-            
-        }else {
-            
-        }
+
+        $image = $request->file('i_sertifikasi');
+        $image_name = 'PXL-'.md5(sha1(time())).'.'.$image->getClientOriginalExtension();
+        $image->move(\base_path() ."/public/uploads/sertifikasi", $image_name);
+
+        $paramUpdate['sertifikasi'] = $image_name;
+        Biodata::where('iduser', Auth::user()->id)->update($paramUpdate);
+        return redirect('akun/menjadi-penyedia-jasa')->with('sukses', 'Berhasil Mengajukan menjadi penyedia jasa');
+        
     }
 }

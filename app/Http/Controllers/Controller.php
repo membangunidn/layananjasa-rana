@@ -15,4 +15,11 @@ class Controller extends BaseController
     public function date() {
         return date('Y-m-d H:i:s');
     }
+
+    public function debug($var, $die = true){
+        echo '<pre>';
+        print_r($var);
+        echo '</pre>';
+        if ($die) die;
+    }
 }

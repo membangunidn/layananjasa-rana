@@ -29,7 +29,7 @@
             
             @yield('content')
         
-            <footer class="footer mt-10 py-5">
+            <footer class="footer mt-10 py-5" style="background-color:white">
                 <div class="border-top"></div>
 
                 <div class="container pt-6 pb-2">
