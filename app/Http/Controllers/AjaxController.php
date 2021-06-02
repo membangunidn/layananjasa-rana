@@ -79,4 +79,19 @@ class AjaxController extends Controller
         $data = Biodata::where('iduser', $request->iduser)->first();
         return view('popup.preview_pdf_sertifikasi', compact('data'));
     }
+
+    public function update_status(Request $request) {
+
+        if($request->val == 1) {
+            User::where('id', $request->id)->update(['idrole' => 2]);
+        }
+        $data = [
+            'isapprove' => $request->val
+        ];
+        $response = Biodata::where('iduser', $request->id)->update($data);
+        return response()->json([
+            'msg' => 'Berhasil mengubah status',
+            $response
+        ], 201);
+    }
 }

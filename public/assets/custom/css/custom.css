@@ -9438,3 +9438,13 @@
   border-bottom: 1px solid #eee;
   margin-bottom: 5px;
 }
+
+.small-box {
+  position: relative;
+  display: block;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  min-height: 125px;
+}

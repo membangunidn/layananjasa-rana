@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('cari_pendidikan', 'AjaxController@cari_pendidikan');
         Route::get('cari_jeniskeahlian', 'AjaxController@cari_jeniskeahlian');
         Route::post('popup_pdfsertifikasi', 'AjaxController@popup_pdfsertifikasi');
+        Route::put('update_status', 'AjaxController@update_status');
 
     });
 
@@ -79,6 +80,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('jenis-keahlian', 'Master\JenisKeahlianController@update');
             Route::delete('jenis-keahlian', 'Master\JenisKeahlianController@destroy');
         });
+
+        Route::get('akun/lihat-pengajuan', 'InformasiPersonalController@list_lihatpengajuan');
+        Route::get('akun/lihat-pengajuan/load', 'InformasiPersonalController@load_tablepengajuan');
     });
 
     // yang akses hanya admin dan seller

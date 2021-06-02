@@ -1,6 +1,6 @@
 <div class="callout callout-info">
     <center>
-    <label><strong> ----- Dokumen Proposal Mahasiswa ----- </strong></label>
+    <label><strong> -----Dokumen Sertifikasi <b class="ml-1 text-primary">{{$data->namalengkap}}</b> ----- </strong></label>
     </center>
 </div>
 

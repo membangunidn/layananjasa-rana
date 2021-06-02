@@ -14,10 +14,10 @@ use App\Helpers\Yin;
 use App\Biodata;
 use App\Lokasi;
 use App\Jenpen;
+use App\User;
 
 use App\Helpers\Cstm;
-
-use Illuminate\Support\Facades\Storage;
+use DataTables;
 
 class InformasiPersonalController extends Controller
 {
@@ -125,5 +125,71 @@ class InformasiPersonalController extends Controller
         Biodata::where('iduser', Auth::user()->id)->update($paramUpdate);
         return redirect('akun/menjadi-penyedia-jasa')->with('sukses', 'Berhasil Mengajukan menjadi penyedia jasa');
         
+    }
+
+    /** Lihat pengajuan */
+
+    public function load_tablepengajuan(Request $request) {
+        $userp = User::with('biodata','lokasi')->whereHas('biodata', function($biodata){
+            $biodata->where('biodata.isajukan', '=' , 1);
+        })->get();
+
+        return DataTables::of($userp)
+            ->addColumn('aksi', function ($userp) {
+                $html = "
+                        <button id='tombol_edit' class='btn btn-icon btn-light-primary btn-sm'
+                            data-id='".$userp->iduser."'
+                            >
+                            <i class='far fa-edit'></i>
+                        </button>
+                        <button id='tombol_edit' class='btn btn-icon btn-light-info btn-sm'
+                            data-id='".$userp->iduser."'
+                            >
+                            <i class='far fa-eye'></i>
+                        </button>
+                        ";
+                return $html;
+            })
+            ->addColumn('sertifikasi', function($userp){
+                $html = '<span style="cursor:pointer" class="label font-weight-bolder label-light-info label-inline" 
+                            data-id="'.$userp->id.'" id="get-pdfsertifikasi">Lihat Disini</span>';
+                return $html;
+            })
+            ->addColumn('pengguna', function($userp){
+                $html = '<span style="width: 250px;">
+                            <div class="d-flex align-items-center">								
+                            <div class="symbol symbol-40 symbol-sm flex-shrink-0 avatar">									
+                                <img class="" src="'. asset('uploads/avatar/'.$userp->biodata->avatar).'" alt="photo">								
+                            </div>								
+                                <div class="ml-4">									
+                                    <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">'.$userp->biodata->namalengkap.'
+                                    </div>									
+                                    <a href="#" class="text-muted text-hover-primary" style="font-size:12px">
+                                    '.$userp->email.'</a>								
+                                </div>							
+                            </div>
+                        </span>';
+                return $html;
+            })
+            ->addColumn('status', function($userp) {
+
+                if($userp->biodata->isapprove == 0) {
+                    $html = '<span style="cursor:pointer" onclick="modalStatus('.$userp->id.', 0)" class="label label-warning label-inline font-weight-bolder">Pending</span>';
+                }
+                else if($userp->biodata->isapprove == 1) {
+                    $html = '<span style="cursor:pointer" onclick="modalStatus('.$userp->id.', 1)" class="label label-success label-inline font-weight-bolder">Disetujui</span>';
+                }
+                else if($userp->biodata->isapprove == 2) {
+                    $html = '<span style="cursor:pointer" onclick="modalStatus('.$userp->id.', 2)" class="label label-danger label-inline font-weight-bolder">Ditolak</span>';
+                }
+                return $html;
+            })
+            ->addIndexColumn()
+            ->rawColumns(['aksi', 'pengguna', 'status', 'sertifikasi'])
+            ->make(true);
+    }
+
+    public function list_lihatpengajuan() {
+        return view('content.list_lihatpengajuan');
     }
 }

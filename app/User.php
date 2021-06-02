@@ -44,4 +44,12 @@ class User extends Authenticatable
     function role() {
         return $this->belongsTo('App\Role', 'idrole');
     }
+
+    function lokasi() {
+        return $this->hasOne('App\Lokasi', 'idlokasi');
+    }
+    
+    function pendidikanterakhir() {
+        return $this->hasOne('App/Jenpen','idjenjang');
+    }
 }

@@ -75,7 +75,7 @@
                     @if (Auth::user()->idrole == 3)
                     <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">
-                            <i class="{{Request::segment(2) == 'penyedia-jasa' ? 'text-primary' : 'text-muted'}} flaticon-folder display-4 font-weight-bold"></i>
+                            <i class="{{Request::segment(2) == 'menjadi-penyedia-jasa' ? 'text-primary' : 'text-muted'}} flaticon-folder display-4 font-weight-bold"></i>
                         </span>
                         <a href="{{url('akun/menjadi-penyedia-jasa')}}">
                             <div class="{{Request::segment(2) == 'menjadi-penyedia-jasa' ? 'text-primary-75' : 'text-dark-75'}} d-flex flex-column flex-lg-fill">
@@ -84,8 +84,19 @@
                         </a>
                     </div>
                         
-                    @else
-                        
+                    @elseif (Auth::user()->idrole == 1)
+                    <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
+                        <span class="mr-4">
+                            <i class="{{Request::segment(2) == 'lihat-pengajuan' ? 'text-primary' : 'text-muted'}} flaticon-clock-2 display-4 font-weight-bold"></i>
+                        </span>
+                        <a href="{{url('akun/lihat-pengajuan')}}">
+                            <div class="{{Request::segment(2) == 'lihat-pengajuan' ? 'text-primary-75' : 'text-dark-75'}} d-flex flex-column flex-lg-fill">
+                                <span class="font-weight-bolder font-size-sm">Lihat Pengajuan</span>
+                            </div>
+                        </a>
+                    </div>
+                    @else 
+                    
                     @endif
                     {{-- <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">

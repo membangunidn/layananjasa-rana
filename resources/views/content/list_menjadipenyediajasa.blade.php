@@ -11,8 +11,16 @@
 
             @if (Auth::user()->biodata->isajukan == 1)
             <div class="alert alert-primary">
-                Anda telah mengajukan sebagai penyedia jasa, Mohon tunggu status anda masih 
-                <span class="label label-warning label-inline font-weight-bolder mr-2 ml-3"> Pending</span>
+                @if(Auth::user()->biodata->isapprove == 0)
+                Anda telah mengajukan sebagai <b class="ml-1">penyedia jasa</b>, Mohon tunggu status anda masih 
+                    <span class="label label-warning label-inline font-weight-bolder mr-2 ml-1"> Pending</span>  
+                @elseif(Auth::user()->biodata->isapprove == 1)
+                Selamat, status pengajuan anda
+                    <span class="label label-success label-inline font-weight-bolder mr-2 ml-1"> Disetujui</span> 
+                @elseif(Auth::user()->biodata->isapprove == 2)
+                Anda telah mengajukan sebagai <b class="ml-1">penyedia jasa</b>, Mohon tunggu status anda masih 
+                    <span class="label label-danger label-inline font-weight-bolder mr-2 ml-1"> Ditolak</span> 
+                @endif
             </div>
             @endif
 
