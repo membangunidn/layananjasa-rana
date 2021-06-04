@@ -67,6 +67,7 @@ class LokasiController extends Controller
         $data = [
             'kodelokasi' => $request->i_kodelokasi,
             'lokasi' => $request->i_lokasi,
+            'slug' => Cstm::slug($request->i_lokasi),
             'created_by' => Auth::user()->biodata->namalengkap,
             'created_at' => $this->date()
         ];
@@ -92,6 +93,7 @@ class LokasiController extends Controller
         $data = [
             'kodelokasi' => $request->i_kodelokasi,
             'lokasi' => $request->i_lokasi,
+            'slug' => Cstm::slug($request->i_lokasi),
             'created_by' => Auth::user()->biodata->namalengkap,
             'updated_at' => $this->date()
         ];

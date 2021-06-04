@@ -18,11 +18,16 @@ Route::get('/', function () {
     ');
 });
 
+Route::get('layanan', 'HomeController@layanan');
+
 Route::get('sign_up', 'AuthController@signup');
 Route::get('sign_in', 'AuthController@signin')->name('login');
 
 Route::post('sign_up', 'AuthController@proses_signup');
 Route::post('sign_in', 'AuthController@proses_signin');
+
+// ajax
+Route::get('ajax/find_lokasi', 'AjaxController@find_lokasi');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
@@ -35,7 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('cari_jeniskeahlian', 'AjaxController@cari_jeniskeahlian');
         Route::post('popup_pdfsertifikasi', 'AjaxController@popup_pdfsertifikasi');
         Route::put('update_status', 'AjaxController@update_status');
-
     });
 
     // yang akses bisa ketiganya

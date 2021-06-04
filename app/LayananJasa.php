@@ -14,4 +14,12 @@ class LayananJasa extends Model
         'hargalayanan', 'rating', 'displaylayanan', 'isaktif',
         'created_by', 'created_at', 'updated_at'
     );
+
+    function kategori() {
+        return $this->belongsTo('App\Kategori', 'idkategori');   
+    }
+
+    function biodata() {
+        return $this->belongsTo('App\Biodata', 'iduser');
+    }
 }

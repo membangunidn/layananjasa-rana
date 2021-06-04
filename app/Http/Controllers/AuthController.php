@@ -13,6 +13,8 @@ use App\Helpers\Yin;
 use App\User;
 use App\Biodata;
 
+use App\Helpers\Cstm;
+
 
 class AuthController extends Controller
 {
@@ -115,6 +117,9 @@ class AuthController extends Controller
 
     public function ye() {
         // Yin::debug(Auth::user()->ro);
+
+        $x = Cstm::slug('Serv AC (Air Conditioner)');
+        $this->debug($x);
     }
 
 }

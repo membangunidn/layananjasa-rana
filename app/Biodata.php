@@ -16,5 +16,9 @@ class Biodata extends Model
 
     protected $primaryKey = 'idbiodata';
 
+    function lokasi() {
+        return $this->belongsTo('App\Lokasi','idlokasi');
+    }
+
    
 }

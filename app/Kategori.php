@@ -10,6 +10,6 @@ class Kategori extends Model
     protected $primaryKey = 'idkategori';
 
     protected $fillable = array(
-        'kodekategori', 'kategorijasa', 'created_by', 'created_at', 'updated_at'
+        'kodekategori', 'kategorijasa', 'created_by', 'created_at', 'updated_at', 'slug'
     );
 }

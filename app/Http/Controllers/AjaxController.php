@@ -94,4 +94,24 @@ class AjaxController extends Controller
             $response
         ], 201);
     }
+
+
+    /** hanya beda dislugnya */
+    public function find_lokasi(Request $request){
+
+        // if(!$request->ajax()) {
+        //     abort(404);
+        // }
+
+        $keyword = $request->cari;
+        $lokasi = Lokasi::where('kodelokasi', 'LIKE', '%'.$keyword. '%')
+            ->orWhere('lokasi', 'LIKE', '%'.$keyword.'%')
+            ->orderBy('lokasi', 'asc')->limit(15)->get();
+
+        $a_data = [];
+        foreach($lokasi as $i => $v) {
+            $a_data[] = array("id"=>$v->slug, "text"=>$v->kodelokasi.' - '.$v->lokasi);
+        }
+        return response()->json($a_data, 201);
+    }
 }

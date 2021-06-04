@@ -66,6 +66,7 @@ class KategoriController extends Controller
         $data = [
             'kodekategori' => $request->i_kodekategori,
             'kategorijasa' => $request->i_kategorijasa,
+            'slug' => Cstm::slug($request->i_kategorijasa),
             'created_by' => Auth::user()->biodata->namalengkap,
             'created_at' => $this->date()
         ];
@@ -91,6 +92,7 @@ class KategoriController extends Controller
         $data = [
             'kodekategori' => $request->i_kodekategori,
             'kategorijasa' => $request->i_kategorijasa,
+            'slug' => Cstm::slug($request->i_kategorijasa),
             'created_by' => Auth::user()->biodata->namalengkap,
             'updated_at' => $this->date()
         ];

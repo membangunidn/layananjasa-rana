@@ -15,6 +15,8 @@ use App\LayananJasa;
 use App\Kategori;
 use DataTables;
 
+use App\Helpers\Cstm;
+
 class LayananJasaController extends Controller
 {
 
@@ -140,7 +142,7 @@ class LayananJasaController extends Controller
             'deskripsilayanan' => $request->i_deskripsilayanan,
             'hargalayanan' => $request->i_harga,
             'isaktif' => $request->i_isaktif == 1 ? 1 : 0,
-            'slug' => strtolower(str_replace(" ", "-", $request->i_layanan)),
+            'slug' => Cstm::slug($request->i_layanan),
             'created_at' => $this->date()
         ];
 

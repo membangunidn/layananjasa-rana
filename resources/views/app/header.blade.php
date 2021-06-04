@@ -12,6 +12,11 @@
                                 <span class="menu-text">Home</span>
                             </a>
                         </li>
+                        <li class="menu-item {{Request::segment(1) == 'layanan' ? 'menu-item-active' : null }}">
+                            <a href="{{url('layanan')}}" class="menu-link">
+                                <span class="menu-text">Layanan</span>
+                            </a>
+                        </li>
 
                         @if (Auth::check() AND (Auth::user()->role->role == 'ADMIN' OR Auth::user()->role->role == 'SELLER'))
                         <li class="menu-item menu-item-submenu menu-item-rel {{Request::segment(1) == 'seller' ? 'menu-item-active' : null }}" data-menu-toggle="hover">

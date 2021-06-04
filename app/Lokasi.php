@@ -10,6 +10,6 @@ class Lokasi extends Model
     protected $primaryKey = 'idlokasi';
 
     protected $fillable = array(
-        'kodelokasi', 'lokasi', 'created_by', 'created_at', 'updated_at'
+        'kodelokasi', 'lokasi', 'created_by', 'created_at', 'updated_at', 'slug'
     );
 }
