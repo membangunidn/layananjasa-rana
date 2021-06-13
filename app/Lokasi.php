@@ -12,4 +12,8 @@ class Lokasi extends Model
     protected $fillable = array(
         'kodelokasi', 'lokasi', 'created_by', 'created_at', 'updated_at', 'slug'
     );
+
+    function biodata() {
+        return $this->hasOne('App/Biodata', 'idlokasi');
+    }
 }

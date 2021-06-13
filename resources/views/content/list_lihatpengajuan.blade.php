@@ -88,7 +88,7 @@
             columns: [
                 {data: 'DT_RowIndex'},
                 {data: 'pengguna'},
-                {data: 'lokasi.lokasi'},
+                {data: 'biodata.lokasi.lokasi'},
                 {data: 'biodata.npwp'},
                 {data: 'sertifikasi', orderable: false, searchable: false},
                 {data: 'status'},

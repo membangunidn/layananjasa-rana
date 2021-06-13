@@ -85,9 +85,10 @@ class AjaxController extends Controller
         if($request->val == 1) {
             User::where('id', $request->id)->update(['idrole' => 2]);
         }
-        $data = [
-            'isapprove' => $request->val
-        ];
+        else {
+            User::where('id', $request->id)->update(['idrole' => 3]);
+        }
+        $data = ['isapprove' => $request->val];
         $response = Biodata::where('iduser', $request->id)->update($data);
         return response()->json([
             'msg' => 'Berhasil mengubah status',

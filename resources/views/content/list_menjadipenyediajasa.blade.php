@@ -15,10 +15,10 @@
                 Anda telah mengajukan sebagai <b class="ml-1">penyedia jasa</b>, Mohon tunggu status anda masih 
                     <span class="label label-warning label-inline font-weight-bolder mr-2 ml-1"> Pending</span>  
                 @elseif(Auth::user()->biodata->isapprove == 1)
-                Selamat, status pengajuan anda
+                Selamat, status pengajuan anda telah 
                     <span class="label label-success label-inline font-weight-bolder mr-2 ml-1"> Disetujui</span> 
                 @elseif(Auth::user()->biodata->isapprove == 2)
-                Anda telah mengajukan sebagai <b class="ml-1">penyedia jasa</b>, Mohon tunggu status anda masih 
+                Anda telah mengajukan sebagai <b class="ml-1">penyedia jasa</b>, Mohon tunggu status anda
                     <span class="label label-danger label-inline font-weight-bolder mr-2 ml-1"> Ditolak</span> 
                 @endif
             </div>

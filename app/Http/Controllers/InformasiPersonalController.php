@@ -130,7 +130,7 @@ class InformasiPersonalController extends Controller
     /** Lihat pengajuan */
 
     public function load_tablepengajuan(Request $request) {
-        $userp = User::with('biodata','lokasi')->whereHas('biodata', function($biodata){
+        $userp = User::with('biodata.lokasi')->whereHas('biodata', function($biodata){
             $biodata->where('biodata.isajukan', '=' , 1);
         })->get();
 
