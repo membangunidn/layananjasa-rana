@@ -49,6 +49,9 @@
                                 <div class="row">
                                 
                                     {{-- show services --}}
+                                    @if ($layanan->count() == 0)
+                                       Kosong 
+                                    @endif
                                     @foreach ($layanan as $i => $v)
                                         <div class="col-md-4 col-lg-12 col-xxl-4 mb-3">
                                             <div class="card card-custom card-shadowless">
@@ -59,7 +62,7 @@
                                                         </div>
                                                         <div class="overlay-layer">
                                                             <a href="{{url('layanan/detail/'.$v->slug)}}" class="btn font-weight-bolder btn-sm btn-warning mr-2">Lihat Detail</a>
-                                                            <a href="#" class="btn font-weight-bolder btn-sm btn-light-warning">Gunakan Jasa ini</a>
+                                                            <a href="{{url('pesanlayanan/'.$v->slug)}}" class="btn font-weight-bolder btn-sm btn-light-warning">Gunakan Jasa ini</a>
                                                         </div>
                                                     </div>
                                                     <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
@@ -108,6 +111,17 @@
                     };
                 },
                 cache: true
+            },
+            formatResult: function(element){
+                return element.text + ' (' + element.id + ')';
+            },
+            formatSelection: function(element){
+                return element.text + ' (' + element.id + ')';
+
+                console.log(element.id)
+            },
+            escapeMarkup: function(m) {
+                return m;
             }
         });
     </script>

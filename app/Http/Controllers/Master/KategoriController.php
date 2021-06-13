@@ -13,6 +13,7 @@ use App\User;
 use App\Kategori;
 
 use DataTables;
+use App\Helpers\Cstm;
 
 class KategoriController extends Controller
 {

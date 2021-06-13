@@ -12,6 +12,7 @@ use App\Helpers\Yin;
 use App\User;
 use App\Lokasi;
 
+use App\Helpers\Cstm;
 use DataTables;
 
 class LokasiController extends Controller

@@ -99,9 +99,9 @@ class AjaxController extends Controller
     /** hanya beda dislugnya */
     public function find_lokasi(Request $request){
 
-        // if(!$request->ajax()) {
-        //     abort(404);
-        // }
+        if(!$request->ajax()) {
+            abort(404);
+        }
 
         $keyword = $request->cari;
         $lokasi = Lokasi::where('kodelokasi', 'LIKE', '%'.$keyword. '%')

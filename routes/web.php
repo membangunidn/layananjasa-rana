@@ -29,6 +29,10 @@ Route::post('sign_in', 'AuthController@proses_signin');
 // ajax
 Route::get('ajax/find_lokasi', 'AjaxController@find_lokasi');
 
+
+// do email
+Route::get('sign_in/konfirm/email/{token}', 'AuthController@verifikasiakun');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
     Route::get('ye', 'AuthController@ye');
@@ -41,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('popup_pdfsertifikasi', 'AjaxController@popup_pdfsertifikasi');
         Route::put('update_status', 'AjaxController@update_status');
     });
+
 
     // yang akses bisa ketiganya
     Route::prefix('akun')->group(function(){
@@ -108,6 +113,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['CekRole:BUYER']], function(){
         Route::get('akun/menjadi-penyedia-jasa', 'InformasiPersonalController@list_menjadipenyediajasa');
         Route::put('akun/menjadi-penyedia-jasa', 'InformasiPersonalController@store_menjadipenyediajasa');
+    
+        // order
+        Route::get('pesanlayanan/{sluglayanan}', 'PesanLayananController@pesanlayanan');
     });
 
 });

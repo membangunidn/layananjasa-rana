@@ -12,6 +12,7 @@ use App\Helpers\Yin;
 use App\User;
 use App\JenisKeahlian;
 
+use App\Helpers\Cstm;
 use DataTables;
 
 class JenisKeahlianController extends Controller

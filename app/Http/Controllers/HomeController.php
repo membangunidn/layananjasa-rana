@@ -23,7 +23,6 @@ class HomeController extends Controller {
         if(isset($request->qkategori)){
             $layanan =  $this->cari_byLayananAndKota($request->qkategori, $request->qkota);
         } else {
-            // session()->flush();
             $request->session()->forget('urlsearchparam');
 
         }

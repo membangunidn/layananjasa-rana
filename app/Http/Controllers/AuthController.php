@@ -14,6 +14,7 @@ use App\User;
 use App\Biodata;
 
 use App\Helpers\Cstm;
+use App\Helpers\SendEmail;
 
 
 class AuthController extends Controller
@@ -57,7 +58,8 @@ class AuthController extends Controller
                 'password' => Hash::make($request->i_password),
                 'hint' => $request->i_password,
                 'idrole' => 3,
-                'created_at' => $this->date()
+                'created_at' => $this->date(),
+                'isaktif' => 0,
             ];
             $id = User::insertGetId($user);
     
@@ -66,15 +68,25 @@ class AuthController extends Controller
                 'namalengkap' => $request->i_namalengkap,
                 'created_at' => $this->date()
             ];
-    
+
+            // save temporary
+            $token = sha1(md5(sha1(base64_encode($request->i_email))));
+            $verifikasi = [
+                'token' => $token,
+                'email' => $request->i_email,
+                'created_at' => $this->date()
+            ];
+            DB::table('verifikasi')->insert($verifikasi);
+            SendEmail::doVerifikasiRegister($request->i_email, $token);
+
             Biodata::insert($biodata);
             
             DB::commit();
-            return redirect('sign_in')->with('sukses', 'Akun kamu berhasil didaftarkan');
+            return redirect('sign_in')->with('sukses', 'Silahkan cek email, untuk mengaktifkan akun');
 
         } catch(Exception $e) {
             DB::rollBack();
-            return redirect('sign_up')->with('gagal', 'Gagal mendaftarkan akun');
+            return redirect('sign_up')->with('gagal', 'Gagal Mendaftarkan akun');
         } 
 
     }
@@ -89,18 +101,26 @@ class AuthController extends Controller
         if(Auth::check()) {
 
             $user = User::where('email', $request->i_email)->first();
-            session([
-                'data' => $user
-            ]);
-            $data = [
-                'status' => true,
-                'data' => $user
-            ];
-            return response()->json($data, 201);
-            // return redirect('sign_in')->with('sukses', 'Perubahan data Kategori Barang berhasil');
+            if($user->isaktif == 0) {
+                $data = [
+                    'status' => 2,
+                    'data' => null
+                ];
+                Auth::logout();
+                return response()->json($data, 201);
+            } else {
+                session([
+                    'data' => $user
+                ]);
+                $data = [
+                    'status' => 1,
+                    'data' => $user
+                ];
+                return response()->json($data, 201);
+            }
         } else {
             $data = [
-                'status' => false,
+                'status' => 0,
                 'data' => null
             ];
             return response()->json($data, 201);
@@ -115,11 +135,19 @@ class AuthController extends Controller
         return redirect('sign_in');
     }
 
-    public function ye() {
-        // Yin::debug(Auth::user()->ro);
+    public function verifikasiakun($token) {
+        
+        $userverifikasi = DB::table('verifikasi')->where('token', $token)->first();
+        if(!$userverifikasi){
+            abort(404);
+        }
+        else {
+            User::where('email', $userverifikasi->email)->update(['isaktif' => 1]);
+            DB::table('verifikasi')->where('token', $token)->delete();
 
-        $x = Cstm::slug('Serv AC (Air Conditioner)');
-        $this->debug($x);
+            return redirect('sign_in')->with('sukses', 'Berhasil verifikasi akun, silahkan login');
+
+        }
     }
 
 }
