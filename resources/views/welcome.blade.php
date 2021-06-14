@@ -1,100 +1,63 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('app.front')
 
-        <title>Laravel</title>
+@section('content')
+<div class="col-12">
+        
+    <table id="dt" class="table w-100">
+      <thead>
+        <tr>
+          <th>nama</th>
+          <th>gender</th>
+          <th>email</th>
+          <th>address</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+@push('js')
+<script type="text/javascript">
+		
+    $(document).ready(function() {
+        $("#dt thead").hide();
+    var dt = $('#dt').DataTable({
+           ajax: "https://itmilenial.com/onepage/generate_user",
+          bInfo: false,
+     pageLength: 8,
+   lengthChange: false,
+    deferRender: true,
+     processing: true,
+     language: {  
+          paginate: {
+              previous: "<",
+              next: ">"
+          },
+        },
+        columns: [
+            {
+                render: function (data, type, row, meta) { 
+                  var html =
+                  '<div class="card shadow">'+
+                                        '  <img src="'+row.avatar+'" class="card-img-top">'+
+                                        '  <div class="card-body">'+
+                  '    <div class="card-text">Nama : '+row.name+'</div>'+
+                  '    <div class="card-text">Kontak : '+row.phone+'</div>'+
+                                        '  </div>'+
+                                        '</div>';
+                  return html;
+                }
+            },
+            {
+              data :"name", visible: false
             }
+        ]
+    });
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+   dt.on('draw', function(data){
+    $('#dt tbody').addClass('row');
+    $('#dt tbody tr').addClass('col-lg-3 col-md-4 col-sm-12');
+   });
+    });
+</script>
+@endpush

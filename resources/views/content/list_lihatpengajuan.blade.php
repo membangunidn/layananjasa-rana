@@ -7,7 +7,7 @@
         <div class="container mt-10">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table datatable-table datatable" id="table-ss">
+                    <table class="table table-borderless" id="table-ss">
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
@@ -146,6 +146,32 @@
             $('#modal_ganti').modal('show')
             $('#id').val(id)
         }
+
+        $(document).on('click', '#tombol_detail', function() {
+            const id = $(this).data('id');
+            
+            $.ajax({
+                method: "POST",
+                url : url + 'akun/lihat-pengajuan/popup',
+                data : {'iduser' : id},
+                success: function(data){
+                    bootbox.dialog({
+                        backdrop: true,
+                        message: data,
+                        size: "extra-large",
+                        buttons: {
+                            danger: {
+                                label: "Tutup",
+                                className: "btn-danger",
+                                callback: function() {
+                                
+                                }
+                            },
+                        }
+                    });
+                }
+            }) 
+        })
 
     </script>
 @endpush

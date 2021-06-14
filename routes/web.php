@@ -31,11 +31,11 @@ Route::get('ajax/find_lokasi', 'AjaxController@find_lokasi');
 
 
 // do email
+Route::get('email/testing', 'AuthController@testing_email');
 Route::get('sign_in/konfirm/email/{token}', 'AuthController@verifikasiakun');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
-    Route::get('ye', 'AuthController@ye');
 
     // request ajax
     Route::prefix('ajax')->group(function(){
@@ -92,6 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('akun/lihat-pengajuan', 'InformasiPersonalController@list_lihatpengajuan');
         Route::get('akun/lihat-pengajuan/load', 'InformasiPersonalController@load_tablepengajuan');
+        Route::post('akun/lihat-pengajuan/popup','InformasiPersonalController@load_popup');
     });
 
     // yang akses hanya admin dan seller

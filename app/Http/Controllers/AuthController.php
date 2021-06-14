@@ -66,6 +66,7 @@ class AuthController extends Controller
             $biodata = [
                 'iduser' => $id,
                 'namalengkap' => $request->i_namalengkap,
+                'avatar' => 'no-photo.png',
                 'created_at' => $this->date()
             ];
 
@@ -148,6 +149,21 @@ class AuthController extends Controller
             return redirect('sign_in')->with('sukses', 'Berhasil verifikasi akun, silahkan login');
 
         }
+    }
+
+    public function testing_email() {
+
+        $details = [
+            'details' => [
+                'link' => null,
+                'register' => null,
+            ]
+        ];
+
+        // return view('email.email_register', $details);
+        // SendEmail::doVerifikasiRegister('ranaadhiella@gmail.com', 'custom');
+
+        return view('welcome');
     }
 
 }

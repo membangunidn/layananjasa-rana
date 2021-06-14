@@ -136,18 +136,11 @@ class InformasiPersonalController extends Controller
 
         return DataTables::of($userp)
             ->addColumn('aksi', function ($userp) {
-                $html = "
-                        <button id='tombol_edit' class='btn btn-icon btn-light-primary btn-sm'
-                            data-id='".$userp->iduser."'
-                            >
-                            <i class='far fa-edit'></i>
-                        </button>
-                        <button id='tombol_edit' class='btn btn-icon btn-light-info btn-sm'
-                            data-id='".$userp->iduser."'
-                            >
-                            <i class='far fa-eye'></i>
-                        </button>
-                        ";
+                $html = '
+                <span id="tombol_detail" 
+                    data-id="'.$userp->biodata->iduser.'" style="width: 112px; cursor:pointer;">
+                        <span class="label font-weight-bold label-sm label-light-primary label-inline">Lihat Detail</span></span>';
+    
                 return $html;
             })
             ->addColumn('sertifikasi', function($userp){
@@ -191,5 +184,15 @@ class InformasiPersonalController extends Controller
 
     public function list_lihatpengajuan() {
         return view('content.list_lihatpengajuan');
+    }
+
+    public function load_popup(Request $request) {
+
+        $userp = User::with('biodata.lokasi', 'biodata.keahlian')->whereHas('biodata', function($biodata){
+            $biodata->where('biodata.isajukan', '=' , 1);
+        })->where('id', $request->iduser)->first();
+
+
+        return view('popup.pop_detail_pengajuan', compact('userp'));
     }
 }

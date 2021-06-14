@@ -10,9 +10,9 @@ use App\Mail\RegisterMail;
 
 class SendEmail {
 
-    CONST username = 'cyberfrog6661@gmail.com';
+    CONST username = 'ranawidjaksono@gmail.com';
     CONST host = 'smtp.gmail.com';
-    CONST password = 'agennsx123';
+    CONST password = 'ranaadhiella';
     CONST port = 465;
     CONST encryption = 'ssl';
     CONST from = 'membangun.id';

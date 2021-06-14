@@ -20,5 +20,9 @@ class Biodata extends Model
         return $this->belongsTo('App\Lokasi','idlokasi');
     }
 
+    function keahlian() {
+        return $this->belongsTo('App\JenisKeahlian', 'idkeahlian');
+    }
+
    
 }
