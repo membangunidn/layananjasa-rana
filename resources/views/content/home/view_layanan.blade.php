@@ -1,7 +1,6 @@
 @extends('app.front')
 
 @section('content')
-<div class="d-flex flex-column-fluid">
     <div class="container">
         <div class="mt-10">
             <div class="row">
@@ -18,14 +17,19 @@
                                     <div class="form-group mb-8">
                                         <label class="font-weight-bolder">Layanan Jasa</label>
                                         <select name="qkategori" id="layanan" class="form-control form-control-solid form-control-lg">
+                                            <option value="" {{session()->get('qkategori') == null ? 'selected' : null }} >Semua Kategori</option>
                                             @foreach ($kategori as $v)
-                                                <option value="{{$v->slug}}">{{$v->kategorijasa}}</option>
+                                                <option value="{{$v->slug}}" {{session()->get('qkategori') == $v->slug ? 'selected' : null }} >{{$v->kategorijasa}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group mb-8">
                                         <label class="font-weight-bolder">Kota</label>
                                         <select name="qkota" id="domisilikota" class="form-control form-control-solid form-control-lg">
+                                            <option value="" {{session()->get('qkota') == null ? 'selected' : null }} >Semua Kota</option>
+                                            @foreach ($kota as $l)
+                                                <option value="{{$l->slug}}" {{session()->get('qkota') == $l->slug ? 'selected' : null }} >{{$l->lokasi}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     
@@ -93,36 +97,6 @@
 
 @push('js')
     <script type="text/javascript">
-        $('#domisilikota').select2({
-            
-            ajax: { 
-                url: url + 'ajax/find_lokasi',
-                type: "get",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        cari: params.term
-                    };
-                },
-                processResults: function (response) {
-                    return {
-                        results: response
-                    };
-                },
-                cache: true
-            },
-            formatResult: function(element){
-                return element.text + ' (' + element.id + ')';
-            },
-            formatSelection: function(element){
-                return element.text + ' (' + element.id + ')';
-
-                console.log(element.id)
-            },
-            escapeMarkup: function(m) {
-                return m;
-            }
-        });
+       
     </script>
 @endpush
