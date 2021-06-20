@@ -13,6 +13,7 @@ class Controller extends BaseController
 
 
     public function date() {
+        date_default_timezone_set("Asia/Bangkok");
         return date('Y-m-d H:i:s');
     }
 

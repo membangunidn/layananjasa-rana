@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('update_status', 'AjaxController@update_status');
     });
 
-
     // yang akses bisa ketiganya
     Route::prefix('akun')->group(function(){
         Route::get('informasi-personal', 'InformasiPersonalController@index');
@@ -115,8 +114,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('akun/menjadi-penyedia-jasa', 'InformasiPersonalController@list_menjadipenyediajasa');
         Route::put('akun/menjadi-penyedia-jasa', 'InformasiPersonalController@store_menjadipenyediajasa');
     
+        Route::get('akun/riwayat-pesanan', 'RiwayatController@list_riwayatpesanan');
         // order
         Route::get('pesanlayanan/{sluglayanan}', 'PesanLayananController@pesanlayanan');
     });
+
+    Route::post('transaksi', 'TransaksiController@pesanlayanan');
+    Route::get('tes', 'TransaksiController@tes');
 
 });

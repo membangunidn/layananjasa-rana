@@ -38,7 +38,6 @@
                     </div>
                 </div>
                 <div class="separator separator-solid"></div>
-                <!--begin::Items-->
                 <div class="d-flex align-items-center flex-wrap mt-8">
                     <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">
@@ -62,17 +61,32 @@
                         </a>
                     </div>
                     
+                    @if (Auth::user()->idrole == 2 or Auth::user()->idrole == 1)
+                    <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
+                        <span class="mr-4">
+                            <i class="{{Request::segment(2) == 'histori-transaksi' ? 'text-primary' : 'text-muted'}} flaticon-list display-4 font-weight-bold"></i>
+                        </span>
+                        <a href="{{url('akun/histori-transaksi')}}" class="font-weight-bolder">
+                            <div class="{{Request::segment(2) == 'histori-transaksi' ? 'text-primary-75' : 'text-dark-75'}} d-flex flex-column">
+                                <span class="font-weight-bolder font-size-sm">Histori Transaksi</span>
+                            </div>
+                        </a>
+                    </div>
+                        
+                    @endif
+
+                    {{-- jika rolenya adalah user --}}
+                    @if (Auth::user()->idrole == 3)
                     <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">
                             <i class="{{Request::segment(2) == 'riwayat-pesanan' ? 'text-primary' : 'text-muted'}} flaticon-list display-4 font-weight-bold"></i>
                         </span>
-                        <div class="{{Request::segment(2) == 'riwayat-pesanan' ? 'text-primary-75' : 'text-dark-75'}} d-flex flex-column">
-                            <span class="font-weight-bolder font-size-sm">Riwayat Pesanan</span>
-                        </div>
+                        <a href="{{url('akun/riwayat-pesanan')}}" class="font-weight-bolder">
+                            <div class="{{Request::segment(2) == 'riwayat-pesanan' ? 'text-primary-75' : 'text-dark-75'}} d-flex flex-column">
+                                <span class="font-weight-bolder font-size-sm">Riwayat Pesanan</span>
+                            </div>
+                        </a>
                     </div>
-
-                    {{-- jika rolenya adalah user --}}
-                    @if (Auth::user()->idrole == 3)
                     <div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
                         <span class="mr-4">
                             <i class="{{Request::segment(2) == 'menjadi-penyedia-jasa' ? 'text-primary' : 'text-muted'}} flaticon-folder display-4 font-weight-bold"></i>

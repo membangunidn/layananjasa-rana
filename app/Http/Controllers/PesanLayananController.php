@@ -18,8 +18,16 @@ use App\Helpers\Cstm;
 
 class PesanLayananController extends Controller
 {
-    public function pesanlayanan($id){
+    public function pesanlayanan($slug){
 
-        return view('content.pesan.v_pesanlayanan');
+        $layanan = LayananJasa::where('slug', $slug)->first();
+        if($layanan) {
+            $lokasi = Lokasi::all();
+            return view('content.pesan.v_pesanlayanan', compact('layanan', 'lokasi'));
+        }
+        else {
+            abort(404);
+        }
+
     }
 }

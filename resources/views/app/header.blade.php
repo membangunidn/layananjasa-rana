@@ -134,7 +134,7 @@
                             <li class="nav-separator mt-3 mb-1"></li>
                             
                             <li class="nav-footer mb-0 mb-lg-1">
-                                <a class="btn btn-light-primary font-weight-bolder" href="{{url('logout')}}">
+                                <a class="btn btn-light-warning font-weight-bolder" href="{{url('logout')}}">
                                     Sign Out
                                 </a>
                                 
@@ -180,7 +180,7 @@
                             <li class="nav-separator mt-3 mb-1"></li>
                             
                             <li class="nav-footer mb-0 mb-lg-1">
-                                <a class="btn btn-light-primary font-weight-bolder" href="{{url('logout')}}">
+                                <a class="btn btn-light-warning font-weight-bolder" href="{{url('logout')}}">
                                     Sign Out
                                 </a>
                                 
