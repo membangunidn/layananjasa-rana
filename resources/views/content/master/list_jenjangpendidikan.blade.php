@@ -39,7 +39,7 @@
                         <div class="table-responsive">
                             <table class="table table-borderless table-hover" id="table-ss" width="100%">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th>No</th>
                                         <th>Kode</th>
                                         <th>Jenjang Pendidikan</th>
@@ -141,7 +141,10 @@
                                     <i class="d-flex spinner spinner-primary spinner-lg mr-15"></i>
                                     Mohon Tunggu ..
                                 </div>`,
-                }
+                },
+                columnDefs: [
+                    {"targets": [0, 3], "className": "text-center",}
+                ],
             });
 
             $('#tombol_tambah').click(function() {

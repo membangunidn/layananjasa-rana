@@ -3,7 +3,7 @@
 @section('content')
     @include('components.v_account')
 
-    <div class="d-flex flex-column-fluid" style="margin-top:-80px;">
+    <div class="d-flex flex-column-fluid" style="margin-top:-150px;">
         <div class="container mt-10">
             <div class="card-body">
                 <div class="table-responsive">
@@ -99,7 +99,10 @@
                                 <i class="d-flex spinner spinner-primary spinner-lg mr-15"></i>
                                 Mohon Tunggu ..
                             </div>`,
-            }
+            },
+            columnDefs: [
+                {"targets": [0, 6], "className": "text-center",}
+            ],
         });
 
 

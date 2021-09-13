@@ -5,8 +5,8 @@
                 <div class="alert-icon">
                     
                 </div>
-                <div class="alert-text">
-                ------------------------------  Detail, Biodata {{$userp->biodata->namalengkap}} ------------------------------
+                <div class="alert-text text-center">
+                 Detail, Biodata {{$userp->biodata->namalengkap}}
                 </div>
             </div>
         </div>

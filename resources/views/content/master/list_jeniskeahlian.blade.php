@@ -131,7 +131,10 @@
                                     <i class="d-flex spinner spinner-primary spinner-lg mr-15"></i>
                                     Mohon Tunggu ..
                                 </div>`,
-                }
+                },
+                columnDefs: [
+                    {"targets": [0, 2], "className": "text-center",}
+                ],
             });
 
             $('#tombol_tambah').click(function() {
