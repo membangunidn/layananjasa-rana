@@ -3,7 +3,7 @@
 @section('content')
     @include('components.v_account')
 
-    <div class="d-flex flex-column-fluid" style="margin-top:-150px;">
+    <div class="d-flex flex-column-fluid" style="margin-top:auto">
         <div class="container mt-10">
             <div class="card-body">
                 <div class="table-responsive">

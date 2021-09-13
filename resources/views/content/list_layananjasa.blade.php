@@ -30,7 +30,7 @@
         <div class="table-responsive" style="overflow-y: hidden;">
             <table class="table table-borderless table-hover" id="table-ss" width="100%">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>No</th>
                         <th>Informasi Layanan Jasa</th>
                         <th>Kategori</th>
@@ -62,7 +62,6 @@
             var table = $('#table-ss').DataTable({
                 serverSide: true,
                 processing: true,
-                "scrollX": true,
                 dom: 'rtp',
                 ajax: url + 'seller/layananjasa/load',
                 columns: [
@@ -78,7 +77,10 @@
                                     <i class="d-flex spinner spinner-primary spinner-lg mr-15"></i>
                                     Mohon Tunggu ..
                                 </div>`,
-                }
+                },
+                columnDefs: [
+                    {"targets": [0, 5], "className": "text-center",}
+                ],
             });
 
             $('#search').on( 'keyup', function () {

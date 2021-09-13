@@ -39,7 +39,7 @@
                         <div class="table-responsive">
                             <table class="table table-borderless table-hover" id="table-ss" width="100%">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th width="10%">No</th>
                                         <th width="20%">Kode</th>
                                         <th width="55">Lokasi</th>
@@ -142,7 +142,10 @@
                                     <i class="d-flex spinner spinner-primary spinner-lg mr-15"></i>
                                     Mohon Tunggu ..
                                 </div>`,
-                }
+                },
+                columnDefs: [
+                    {"targets": [0, 2], "className": "text-center",}
+                ],
             });
 
             $('#tombol_tambah').click(function() {

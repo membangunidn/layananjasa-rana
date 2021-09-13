@@ -118,6 +118,7 @@ Route::group(['middleware' => 'auth'], function () {
     
         Route::get('akun/riwayat-pesanan', 'RiwayatController@list_riwayatpesanan');
         Route::get('akun/riwayat-pesanan/load', 'RiwayatController@load_data');
+        Route::post('akun/riwayat-pesanan/detail', 'RiwayatController@detail');
         // order
         Route::get('pesanlayanan/{sluglayanan}', 'PesanLayananController@pesanlayanan');
     });

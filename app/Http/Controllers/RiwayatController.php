@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Transaksi;
 use DataTables;
+use App\Helpers\Tanggal;
 class RiwayatController extends Controller
 {
     public function load_data(Request $request) {
@@ -43,5 +44,16 @@ class RiwayatController extends Controller
 
     public function list_riwayatpesanan(){
         return view('content.list_riwayatpesanan');
+    }
+
+    public function detail(Request $request) {
+        
+        $trx = Transaksi::with(['layananjasa'])
+            ->where('invoice', $request->invoice)->first()->toArray();
+
+        // return response()->json(['data' => $trx], 200);
+        // $this->debug($trx);die;
+
+        return view('popup.pop_detailpemesanan', compact('trx'));
     }
 }
