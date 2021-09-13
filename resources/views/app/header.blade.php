@@ -98,7 +98,8 @@
                 </li>
 
                 @if (Auth::check())
-                <li class="topbar-wrapper dropdown dropdown-hover mr-10">
+                {{-- bell --}}
+                {{-- <li class="topbar-wrapper dropdown dropdown-hover mr-10">
                     <div class="topbar-item topbar-item-user cursor-pointer" data-toggle="dropdown">    
                         <span class="avatar">
                             <i class="flaticon2-bell-4"></i><span class="label label-sm label-rounded label-danger">5</span>
@@ -142,7 +143,7 @@
                             
                         </ul>
                     </div>    
-                </li>
+                </li> --}}
 
                 <li class="topbar-wrapper dropdown dropdown-hover">
                     <div class="topbar-item topbar-item-user cursor-pointer" data-toggle="dropdown">    

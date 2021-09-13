@@ -1,5 +1,8 @@
 @extends('app.front')
 
+@push('css')
+<link rel="stylesheet" href="{{asset('front/front/css/home.css')}}">
+@endpush
 @section('content')
     <div class="container">
         <div class="mt-10">
@@ -46,38 +49,41 @@
                         <div class="card-body">
                          
                             <div class="mb-11">
-                                <div class="d-flex justify-content-between align-items-center mb-7">
+                                {{-- <div class="d-flex justify-content-between align-items-center mb-7">
                                     <h2 class="font-weight-bolder text-dark font-size-h3 mb-0">Layanan Jasa</h2>
-                                </div>
+                                </div> --}}
                                 
-                                <div class="row">
-                                
-                                    {{-- show services --}}
-                                    @if ($layanan->count() == 0)
-                                       Kosong 
-                                    @endif
-                                    @foreach ($layanan as $i => $v)
-                                        <div class="col-md-4 col-lg-12 col-xxl-4 mb-3">
-                                            <div class="card card-custom card-shadowless">
-                                                <div class="card-body p-0">
-                                                    <div class="overlay">
-                                                        <div class="overlay-wrapper rounded bg-light text-center">
-                                                            <img src="{{asset('jasa/'.$v->displaylayanan)}}" class="mw-100 w-200px">
-                                                        </div>
-                                                        <div class="overlay-layer">
-                                                            <a href="{{url('layanan/detail/'.$v->slug)}}" class="btn font-weight-bolder btn-sm btn-warning mr-2">Lihat Detail</a>
-                                                            <a href="{{url('pesanlayanan/'.$v->slug)}}" class="btn font-weight-bolder btn-sm btn-light-warning">Gunakan Jasa ini</a>
-                                                        </div>
+                                <div class="infoCards container" style="margin-top:-70px;">
+                                    <div class="row">
+                                        {{-- show services --}}
+                                        @if ($layanan->count() == 0)
+                                    
+                                        @endif
+                                        @foreach ($layanan as $i => $v)
+                                            @if ($v->isaktif == 1)
+                                            <div class="col-md-6 mt-10">
+                                                <div class="card">
+                                                    <div style="height: 150px;background-image: url('{{asset('jasa/'.$v->displaylayanan)}}');
+                                                        border-top-left-radius: 10px;border-top-right-radius: 10px;background-position: center;
+                                                        background-repeat: no-repeat;
+                                                        background-size: cover;">
                                                     </div>
-                                                    <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                                        <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-warning mb-1">{{ $v->layanan }}</a>
-                                                        <span class="font-size-lg">{{ 'Rp. '.number_format($v->hargalayanan, 2) }}</span>
+                                                    <div class="cardContent">
+                                                        <a href="{{url('pesanlayanan/'.$v->slug)}}" style="color:#333">
+                                                            <h3>{{ $v->layanan }}</h3>
+                                                            <p>{{ Str::limit($v->deskripsilayanan, 75) }}</p>
+                                                        </a>
+                                                        
+                                                        <a href="{{url('pesanlayanan/'.$v->slug)}}" class="_button _button_bottom">
+                                                            Mulai {{ 'Rp. '.number_format($v->hargalayanan, 2) }}
+                                                        </a>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
+                                            </div>   
+                                                
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center flex-wrap">
 									<div class="d-flex flex-wrap mr-3">

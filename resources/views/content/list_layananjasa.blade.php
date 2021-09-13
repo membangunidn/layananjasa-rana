@@ -22,28 +22,27 @@
     </div>
 </div>
 
-<div class="d-flex flex-column-fluid">
+<div class="d-flex">
     <div class="container mt-10">
-        <div class="card card-custom">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-borderless table-hover" id="table-ss">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Informasi Layanan Jasa</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
-                                <th>Aktif</th>
-                                <th>Aksi</th>
-                            </tr>                            
-                        </thead>
-                        <tbody>
+        <div class="input-group">
+            <input id="search" class="form-control input-sm" placeholder="Cari Kata Kunci " type="text" value="">
+        </div>
+        <div class="table-responsive" style="overflow-y: hidden;">
+            <table class="table table-borderless table-hover" id="table-ss" width="100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Informasi Layanan Jasa</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>Aktif</th>
+                        <th>Aksi</th>
+                    </tr>                            
+                </thead>
+                <tbody>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -63,6 +62,8 @@
             var table = $('#table-ss').DataTable({
                 serverSide: true,
                 processing: true,
+                "scrollX": true,
+                dom: 'rtp',
                 ajax: url + 'seller/layananjasa/load',
                 columns: [
                     {data: 'DT_RowIndex'},
@@ -78,6 +79,10 @@
                                     Mohon Tunggu ..
                                 </div>`,
                 }
+            });
+
+            $('#search').on( 'keyup', function () {
+                table.search( this.value ).draw();
             });
 
         })

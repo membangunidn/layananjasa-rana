@@ -1,0 +1,273 @@
+.landing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landingText h1 {
+    font-size: 6vw;
+    margin: 0 !important;
+}
+
+.landingText h3 {
+    margin: 6px !important;
+    font-size:1.5vw;
+    opacity: 0.3;
+    line-height: 30px;
+}
+
+.landingText #tombol {
+    width: 200px;
+    margin-top: 30px;
+    padding: 10px 0px;
+    background-color: #31428d;
+    border-radius: 5px;
+    text-align: center
+}
+
+.landing .spanText {
+    color:#5d5e79;
+    font-size: 2vw
+}
+
+.landingText #tombol a {
+    font-size: 1.2vw;
+    color: #fff;
+}
+
+.landingImage img {
+    width: 28vw;
+}
+
+.fooland {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 100vh;
+}
+
+.fooland img {
+    width: 28vw;
+}
+
+/* CARDS */
+.infoCards {
+    align-items: center;
+    padding: 40px 0 40px 0;
+}
+
+.infoCards .card {
+    position: relative;
+    height: 400px;
+    width: auto;
+    background: #fff;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.09), 0 10px 10px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+}
+
+.infoCards .cardoneImg {
+    width: 180px;
+    position: absolute;
+    top: -50px;
+    right: -50px;
+}
+
+.cardContent {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.cardContent:hover {
+    color: #31428d;
+    /* cursor: pointer; */
+}
+
+.cardContent h2 {
+    font-weight: 600;
+}
+
+.cardContent p {
+    line-height: 30px;
+    opacity: 0.6
+}
+.dataTables_paginate {
+    margin-top: 15px;
+    position: absolute;
+    text-align: center;  
+}
+
+.cardContent ._button {
+    text-decoration: none;
+    width: 80%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    border: none;
+    /* border-radius: 10px; */
+    padding: 14px 48px;
+    font-size: 1rem;
+    line-height: 1.5 !important;
+}
+
+.cardContent ._button:hover {
+    background-color: #FFA800;
+}
+
+.cardContent ._button_bottom {
+    position: absolute; 
+    right:0; 
+    bottom:0; 
+    background-color:#d89613; 
+    margin-bottom:25px; 
+    margin-right:10%;
+}
+
+.table thead {
+    background-color: #d89613;
+    color: #fff;
+}
+
+div.dataTables_info {position:absolute}
+div.dataTables_wrapper div.dataTables_paginate {
+    float:right; text-align:center
+}
+
+/* .dataTables_wrapper .dataTables_paginate .pagination .page-item.active > .page-link {
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    background-color: #FFA800;
+    color: #ffffff;
+} */
+
+
+/* RESPONSIVE */
+@media only screen and (max-width: 600px) {
+
+    /* LANDING PAGE */
+    .landing {
+        flex-direction: column-reverse;
+        height: 750px;
+        align-items: center;
+        justify-content: center;
+        text-align: center
+    }
+
+    .landingText h1 {
+        font-size: 6vw;
+        margin: 0 !important;
+    }
+
+    .landingText h3 {
+        font-size: 16px;
+    }
+    
+
+    .landingText #tombol {
+        margin: 0 auto;
+    }
+
+    .landingText #tombol a {
+        font-size: 3vw;
+    }
+
+    .landingImage img {
+        width: 52vw;
+        margin-bottom: 20px;
+    }
+
+    .fooland {
+        flex-direction: column;
+        height: 750px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .fooland img {
+        width: 52vw;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .landing {
+        flex-direction: column-reverse;
+        height: 750px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .landingText h1 {
+        font-size: 10vw;
+        margin: 0 !important;
+    }
+    .landingText h3 {
+        font-size: 16px;
+    }
+
+    .landingText #tombol {
+        margin: 0 auto;
+    }
+
+    .landingText #tombol a {
+        font-size: 2vw;
+    }
+
+    .landingImage img {
+        width: 70vw;
+        margin-bottom: 20px;
+    }
+
+    .fooland {
+        flex-direction: column;
+        height: 750px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+        height: 100vh;
+    }
+
+    .fooland img {
+        width: 52vw;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.FFA800%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.FFA800%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}

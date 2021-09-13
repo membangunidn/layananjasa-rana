@@ -10,6 +10,7 @@
         <meta name="url" content="{{url('').'/'}}">
 
         <link rel="stylesheet" href="{{asset('front/front/css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('front/front/css/core.css')}}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
 
         {{-- from assets --}}
