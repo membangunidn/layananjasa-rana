@@ -3,11 +3,11 @@
 @section('content')
     @include('components.v_account')
 
-    <div class="d-flex flex-column-fluid">
+    <div class="d-flex flex-column-fluid" style="margin-top:-80px;">
         <div class="container mt-10">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-borderless" id="table-ss">
+                    <table class="table table-borderless" id="table-ss" width="100%">
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>

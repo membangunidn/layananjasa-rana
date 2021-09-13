@@ -19,7 +19,12 @@
         <link href="{{asset('assets/custom/css/custom.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         @stack('css')
+
+        <style>
+
+        </style>
     </head>
 
     <body id="site_body" class="header-enabled">
@@ -68,6 +73,22 @@
                 </div>
             </footer>      
         </main>
+
+        <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." 
+            style="position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:40px;
+            background-color:#25d366;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+          font-size:30px;
+            box-shadow: 2px 2px 3px #999;
+          z-index:100;" target="_blank">
+            <i class="fa fa-whatsapp" style="margin-top:16px;"></i>
+        </a>
 
         <script src="{{asset('front/front/js/main.bundle.js')}}"></script>
 

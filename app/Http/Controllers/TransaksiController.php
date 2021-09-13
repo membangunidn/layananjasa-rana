@@ -12,6 +12,7 @@ use App\Transaksi;
 use App\Helpers\Cstm;
 use App\Helpers\Yin;
 use App\Helpers\SendEmail;
+use App\LayananJasa;
 
 class TransaksiController extends Controller
 {
@@ -44,17 +45,16 @@ class TransaksiController extends Controller
             'nohpcustomer' => $request->i_nomorhp,
             'idlokasicustomer' => $request->i_lokasi,
             'alamatcustomer' => $request->i_alamatlengkap,
-            'idlayanan' => $request->i_layanan,
+            'idlayanan' => $request->i_idlayanan,
             'harga' => $request->i_harga,
             'status' => 'P',
-            'requested_at' => $this->date(), 
+            'requested_at' => $this->date(),
+            'catatan' => $request->i_catatan
         ];
 
-        
-
-
-
-        // $this->debug($record);
+        Transaksi::insert($record);
+        return redirect('akun/riwayat-pesanan')->with('sukses', 'Berhasil menambahkan layanan jasa');
+    
     }
     
     public function tes(){

@@ -7,6 +7,7 @@
 @section('content')
 <div class="d-flex flex-column-fluid">
     <div class="container">
+        @include('components.flashmsg')
         <div class="mt-10">
             <div class="row">
                 <div class="col-md-2"></div>
@@ -126,6 +127,7 @@
                             <input type="hidden" name="i_harga" value="{{$layanan->hargalayanan}}">
                             <input type="hidden" name="i_layanan" value="{{$layanan->layanan}}">
                             <input type="hidden" name="i_idpenjual" value="{{$layanan->iduser}}">
+                            <input type="hidden" name="i_idlayanan" value="{{$layanan->idlayanan}}">
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-warning btn-block mr-2">Pesan Jasa</button>
                             </div>

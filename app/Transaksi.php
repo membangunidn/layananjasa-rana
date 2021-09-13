@@ -10,4 +10,8 @@ class Transaksi extends Model
     protected $primaryKey = 'idtransaksi';
     protected $guarded = [];
     public $timestamps = false;
+
+    public function layananjasa() {
+        return $this->belongsTo(LayananJasa::class, 'idlayanan');
+    }
 }
