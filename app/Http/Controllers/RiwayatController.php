@@ -51,9 +51,6 @@ class RiwayatController extends Controller
         $trx = Transaksi::with(['layananjasa'])
             ->where('invoice', $request->invoice)->first()->toArray();
 
-        // return response()->json(['data' => $trx], 200);
-        // $this->debug($trx);die;
-
         return view('popup.pop_detailpemesanan', compact('trx'));
     }
 }

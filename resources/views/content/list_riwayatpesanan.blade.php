@@ -33,6 +33,47 @@
         </div>
     </div>
 
+    {{-- modal change statu --}}
+    <div class="modal fade" id="modal_ganti" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="form_tambah" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 id="modal_title">Ganti Status Pengajuan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4" style="cursor:pointer;" onclick="changeStatus(0)">
+                                <div class="small-box" style="background-color:yellow">
+                                    <div class="d-flex justify-content-center">
+                                        <h3 class="text-center mt-14 text-white">Pending</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="cursor:pointer;" onclick="changeStatus(1)">
+                                <div class="small-box" style="background-color:blue">
+                                    <div class="d-flex justify-content-center">
+                                        <h3 class="text-center mt-14 text-white">Disetujui</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="cursor:pointer;" onclick="changeStatus(2)">
+                                <div class="small-box" style="background-color:red">
+                                    <div class="d-flex justify-content-center">
+                                        <h3 class="text-center mt-14 text-white">Ditolak</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="id">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
@@ -97,12 +138,10 @@
                                 }
                             },
                         }
-                    }); 
-                    // console.log(response);
+                    });
                 },
                 error: (xhr) => {
-                    mm.unblok();
-                    alert(xhr)
+                    mm.notifikasi_error(xhr);
                 }
             })
         })

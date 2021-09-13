@@ -14,4 +14,12 @@ class Transaksi extends Model
     public function layananjasa() {
         return $this->belongsTo(LayananJasa::class, 'idlayanan');
     }
+
+    public function seller() {
+        return $this->belongsTo(Biodata::class, 'idpenyediajasa', 'iduser');
+    }
+
+    public function lokasi() {
+        return $this->belongsTo(Lokasi::class, 'idlokasicustomer', 'idlokasi');
+    }
 }

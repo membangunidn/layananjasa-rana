@@ -23,4 +23,46 @@ var mm = {
     unblok: function () {
         $.unblockUI();
     },
+    notifikasi_error: (xhr) => {
+
+        var data = JSON.parse(xhr.responseText)
+        var message = '';
+        var count = 0;
+        $.each(data.errors, function (index, value) { 
+            if (!count) {
+            message += `${value[0]}`;
+            }
+            count++;
+        });
+    
+        if (!message.length) {
+            message = `${data.message}`;
+        }
+    
+        if(message == 'CSRF token mismatch.'){
+            message = 'CSRF token anda tidak valid'
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "3000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            setTimeout(() => {
+                location.reload()
+            }, 3000)
+        }
+    
+        toastr.error(message, 'Oppsss..');
+    }
 }

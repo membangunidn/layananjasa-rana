@@ -68,7 +68,7 @@
                         </span>
                         <a href="{{url('akun/histori-transaksi')}}" class="font-weight-bolder">
                             <div class="{{Request::segment(2) == 'histori-transaksi' ? 'text-primary-75' : 'text-dark-75'}} d-flex flex-column">
-                                <span class="font-weight-bolder font-size-sm">Histori Transaksi</span>
+                                <span class="font-weight-bolder font-size-sm">Transaksi</span>
                             </div>
                         </a>
                     </div>

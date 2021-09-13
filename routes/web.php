@@ -54,8 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('informasi-akun', 'InformasiAkunController@index');
         Route::put('informasi-akun', 'InformasiAkunController@update');
 
-        Route::get('histori-transaksi', 'HistoryTrxController@index');
-
     });
 
     // yang akses hanya admin
@@ -108,7 +106,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::delete('layananjasa', 'layananJasaController@destroy');
             Route::get('detail-layananjasa/{slug}', 'layananJasaController@detail');
             Route::put('detail-layananjasa/{slug}', 'layananJasaController@update');
+
         });
+
+        Route::get('akun/histori-transaksi', 'HistoryTrxController@index');
+        Route::get('akun/histori-transaksi/load', 'HistoryTrxController@load_data');
+        Route::PUT('akun/histori-transaksi/update_status', 'HistoryTrxController@update_status');
+        Route::post('akun/histori-transaksi/detail','HistoryTrxController@detail');
     });
 
     // yang akses hanya buyer

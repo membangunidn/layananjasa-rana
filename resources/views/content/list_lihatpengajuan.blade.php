@@ -105,7 +105,6 @@
             ],
         });
 
-
         $(document).on('click', '#get-pdfsertifikasi', function(){
             $.ajax({
                 method: "POST",
@@ -126,6 +125,9 @@
                             },
                         }
                     });
+                },
+                error: (xhr) => {
+                    mm.notifikasi_error(xhr);
                 }
             })                
         })
@@ -141,7 +143,11 @@
                     toastr.success(data.msg, "Sukses");
                     table.draw()
                     $('#modal_ganti').modal('hide')
+                },
+                error: (xhr) => {
+                    mm.notifikasi_error(xhr);
                 }
+                
             })
         }
 
@@ -172,6 +178,9 @@
                             },
                         }
                     });
+                },
+                error: (xhr) => {
+                    mm.notifikasi_error(xhr);
                 }
             }) 
         })
