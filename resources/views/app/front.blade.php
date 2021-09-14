@@ -11,6 +11,7 @@
 
         <link rel="stylesheet" href="{{asset('front/front/css/main.css')}}">
         <link rel="stylesheet" href="{{asset('front/front/css/core.css')}}">
+        <link rel="stylesheet" href="{{asset('front/front/css/footer.css')}}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
 
         {{-- from assets --}}
@@ -33,45 +34,30 @@
             @include('app.header')
             
             @yield('content')
-        
-            <footer class="footer mt-10 py-5" style="background-color:white">
-                <div class="border-top"></div>
 
-                <div class="container pt-6 pb-2">
-                    <div class="d-flex align-items-center justify-content-between flex-lg-row flex-column">
-                        <div class="d-flex align-items-center order-lg-1 order-2">
-                            <a class="d-none d-md-flex align-items-center">
-                                <img alt="logo" src="{{asset('front/front/img/logotukang.png')}}" class="h-60px h-md-60px">
-                            </a>
-            
-                            <div class="d-flex flex-wrap align-items-center mt-1 ml-5 ml-lg-20 font-weight-bold">
-                                <a href="#" class="mr-3 mr-lg-5">
-                                    FAQs
-                                </a>
-                                <a href="#" class="mr-3 mr-lg-5">
-                                    Licenses
-                                </a>
-                                <a href="#" class="mr-3 mr-lg-5">
-                                    Support
-                                </a>
-                                <a href="#" class="mr-3 mr-lg-5">
-                                    Terms
-                                </a>
-                                <a href="#" class="mr-3 mr-lg-5">
-                                    Privacy
-                                </a>
-                                <a href="#" class="mr-0 mr-lg-5">
-                                    Refund
-                                </a>
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12">
+                            <div class="right-text-content">
+                                    <ul class="social-icons">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    </ul>
                             </div>
                         </div>
-                        
-                        <nav class="nav footer-nav d-flex align-items-center order-lg-2 order-1 mb-lg-0 mb-5">
-                            Copyright © 2021 Membangun.id
-                        </nav>
+                        <div class="col-lg-8 col-xs-12">
+                            <div class="left-text-content">
+                                <p>© Copyright © 2021 Membangun.id
+                                
+                                <br>Powered by Dev</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </footer>      
+            </footer>
         </main>
 
         <a href="#" 

@@ -1,0 +1,113 @@
+footer {
+    margin-top: 60px;
+    padding: 50px 0px;
+    background-color: #FFA800;
+  }
+  
+  footer .left-text-content p {
+    margin-top: 5px;
+    color: black;
+    font-size: 14px;
+    text-align: right;
+  }
+  
+  footer .right-text-content p {
+    color: black;
+    font-size: 14px;
+    margin-right: 15px;
+    text-transform: uppercase;
+  }
+  
+  
+  footer .right-text-content {
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  footer .logo {
+    text-align: center;
+  }
+  
+  footer .right-text-content ul li {
+    display: inline-block;
+    margin-left: 15px;
+  }
+  footer .right-text-content ul li:first-child {
+    margin-left: 0px;
+  }
+  
+  
+  footer .right-text-content ul li a {
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    text-align: center;
+    line-height: 44px;
+    font-size: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: #428bca;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+  }
+  
+  footer .right-text-content ul li a:hover {
+    color: #2a2a2a;
+  }
+
+
+  @media (max-width: 992px) {
+    #top {
+      padding-top: 100px;
+      height: auto;
+    }
+    .header-area .main-nav .nav li.submenu:after {
+      right: 3px;
+    }
+    .header-area .main-nav .nav li.submenu {
+      padding-right: 15px;
+    }
+    .header-area .main-nav .nav li {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+    .header-area .main-nav .nav li a {
+      font-size: 14px;
+      letter-spacing: 0px;
+    }
+    #top .left-content {
+      text-align: center;
+      padding: 25% 0px;
+    }
+    #about .right-content {
+      margin-left: 0px;
+      margin-top: 30px;
+    }
+    #chefs .chef-item {
+      margin-bottom: 30px;
+    }
+    #reservation .phone {
+      margin-bottom: 60px;
+    }
+    #contact {
+      margin-left: 0px;
+      margin-top: 30px;
+    }
+    #offers .tabs-content .left-list {
+      margin-right: 0px;
+    }
+  
+    #offers .tabs-content .right-list {
+      margin-left: 0px;
+    }
+    footer .right-text-content {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    footer .left-text-content p {
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
