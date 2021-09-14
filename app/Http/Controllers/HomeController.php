@@ -64,4 +64,17 @@ class HomeController extends Controller {
 
         return $sql;
     }
+
+    public function index_home() {
+        $layanan = DB::table('layanan as lj')
+                ->select('lj.*', 'b.idlokasi', 'b.namalengkap', 'l.lokasi', 
+                            'l.slug as lokasislug', 'k.kategorijasa', 'k.slug as kategorislug')
+                ->LeftJoin('kategorijasa as k', 'lj.idkategori', '=', 'k.idkategori')
+                ->LeftJoin('biodata as b', 'lj.iduser', '=', 'b.iduser')
+                ->LeftJoin('lokasi as l', 'b.idlokasi', '=', 'l.idlokasi')
+                ->orderBy('lj.idlayanan', 'desc')
+                ->limit(6)->get();
+
+        return view('content.home', compact('layanan'));
+    }
 }

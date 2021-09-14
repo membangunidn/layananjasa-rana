@@ -3,6 +3,22 @@ footer {
     padding: 50px 0px;
     background-color: #FFA800;
   }
+
+  .icn i {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    text-align: center;
+    line-height: 45px;
+    color: #FFA800;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 22px;
+    margin-top: 0px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
   
   footer .left-text-content p {
     margin-top: 5px;
