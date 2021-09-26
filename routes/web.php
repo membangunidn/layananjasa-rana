@@ -33,7 +33,7 @@ Route::get('sign_in/konfirm/email/{token}', 'AuthController@verifikasiakun');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
-
+    
     // request ajax
     Route::prefix('ajax')->group(function(){
         Route::get('cari_lokasi', 'AjaxController@cari_lokasi');
@@ -42,19 +42,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('popup_pdfsertifikasi', 'AjaxController@popup_pdfsertifikasi');
         Route::put('update_status', 'AjaxController@update_status');
     });
-
+    
     // yang akses bisa ketiganya
     Route::prefix('akun')->group(function(){
         Route::get('informasi-personal', 'InformasiPersonalController@index');
         Route::put('informasi-personal', 'InformasiPersonalcontroller@update');
-
+        
         Route::get('informasi-akun', 'InformasiAkunController@index');
         Route::put('informasi-akun', 'InformasiAkunController@update');
-
+        
     });
 
     // yang akses hanya admin
     Route::group(['middleware' => ['CekRole:ADMIN']], function() {
+        Route::get('/testemail', 'HomeController@testemail');
         Route::prefix('master')->group(function(){
 
             // LOKASI

@@ -7,6 +7,8 @@ use App\User;
 use Config;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
+use App\Mail\TestMail;
+
 
 class SendEmail {
 
@@ -17,21 +19,21 @@ class SendEmail {
     CONST encryption = 'ssl';
     CONST from = 'membangun.id';
 
-    public static function connect(){
+    // public static function connect(){
 
-        Config::set('mail.mailers.smtp.transport', 'smtp');
-        Config::set('mail.mailers.smtp.port', self::port);
-        Config::set('mail.mailers.smtp.encryption', self::encryption);
-        Config::set('mail.mailers.smtp.host', self::host);
-        Config::set('mail.mailers.smtp.username', self::username);
-        Config::set('mail.mailers.smtp.password', self::password);
+    //     Config::set('mail.mailers.smtp.transport', 'smtp');
+    //     Config::set('mail.mailers.smtp.port', self::port);
+    //     Config::set('mail.mailers.smtp.encryption', self::encryption);
+    //     Config::set('mail.mailers.smtp.host', self::host);
+    //     Config::set('mail.mailers.smtp.username', self::username);
+    //     Config::set('mail.mailers.smtp.password', self::password);
 
-        Config::set('mail.from.address', self::username);
-        Config::set('mail.from.name', self::from);
-    }
+    //     Config::set('mail.from.address', self::username);
+    //     Config::set('mail.from.name', self::from);
+    // }
 
     public static function doVerifikasiRegister($emailtujuan, $token){
-        self::connect();
+        // self::connect();
 
         $details = [
             'register' => url('sign_up'),
@@ -45,5 +47,20 @@ class SendEmail {
             $response = false;
         }
         return $response;
+    }
+
+    public static function doTestEmail(){
+        // self::connect();
+
+        try {
+            Mail::to('muhammadmasum50@gmail.com')->send(new TestMail());
+           
+            return $response = 1;
+        } catch (\Throwable $th) {
+            $response = 0;
+            return $th->getMessage();
+            
+            
+        }
     }
 }

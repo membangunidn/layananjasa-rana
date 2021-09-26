@@ -9,6 +9,10 @@ use App\Biodata;
 use App\Lokasi;
 use Illuminate\Support\Facades\DB;
 
+use App\Helpers\Cstm;
+use App\Helpers\SendEmail;
+
+
 class HomeController extends Controller {
     
     public function layanan(Request $request) {
@@ -76,5 +80,11 @@ class HomeController extends Controller {
                 ->limit(6)->get();
 
         return view('content.home', compact('layanan'));
+    }
+
+    public function testemail() {
+        $x = SendEmail::doTestEmail();
+
+        return $x;
     }
 }
