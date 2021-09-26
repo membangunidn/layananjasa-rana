@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     // yang akses bisa ketiganya
     Route::prefix('akun')->group(function(){
         Route::get('informasi-personal', 'InformasiPersonalController@index');
-        Route::put('informasi-personal', 'InformasiPersonalcontroller@update');
+        Route::put('informasi-personal', 'InformasiPersonalController@update');
         
         Route::get('informasi-akun', 'InformasiAkunController@index');
         Route::put('informasi-akun', 'InformasiAkunController@update');
@@ -96,17 +96,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['CekRole:ADMIN,SELLER']], function() {
         Route::prefix('seller')->group(function(){
 
-            Route::get('add-layananjasa', 'layananJasaController@add');
-            Route::post('add-layananjasa', 'layananJasaController@store');
-            Route::get('layananjasa/load', 'layananJasaController@load_table');
-            Route::get('layananjasa/isaktif', 'layananJasaController@isaktif');
-            Route::get('layananjasa', 'layananJasaController@list');
-            Route::delete('layananjasa', 'layananJasaController@destroy');
-            Route::get('detail-layananjasa/{slug}', 'layananJasaController@detail');
-            Route::put('detail-layananjasa/{slug}', 'layananJasaController@update');
+            Route::get('add-layananjasa', 'LayananJasaController@add');
+            Route::post('add-layananjasa', 'LayananJasaController@store');
+            Route::get('layananjasa/load', 'LayananJasaController@load_table');
+            Route::get('layananjasa/isaktif', 'LayananJasaController@isaktif');
+            Route::get('layananjasa', 'LayananJasaController@list');
+            Route::delete('layananjasa', 'LayananJasaController@destroy');
+            Route::get('detail-layananjasa/{slug}', 'LayananJasaController@detail');
+            Route::put('detail-layananjasa/{slug}', 'LayananJasaController@update');
 
-            Route::get('layananjasa/edit/{layananjasa:idlayanan}', 'layananJasaController@edit');
-            Route::put('update-layananjasa/{idlayanan}', 'layananJasaController@update');
+            Route::get('layananjasa/edit/{layananjasa:idlayanan}', 'LayananJasaController@edit');
+            Route::put('update-layananjasa/{idlayanan}', 'LayananJasaController@update');
 
         });
 
