@@ -41,10 +41,10 @@
                         <div class="col-md-4 col-xs-12">
                             <div class="right-text-content">
                                     <ul class="social-icons">
-                                        <li><a href="#" class="icn"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" class="icn"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" class="icn"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#" class="icn"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="instagram.com/membangunidn" class="icn"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="instagram.com/membangunidn" class="icn"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="instagram.com/membangunidn" class="icn"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="instagram.com/membangunidn" class="icn"><i class="fa fa-instagram"></i></a></li>
                                     </ul>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
             </footer>
         </main>
 
-        <a href="#" 
+        <a href="https://web.whatsapp.com/send?phone=6289631844058&amp;text=Saya ingin tanya mengenai jasa pada membangunidn." 
             style="position:fixed;
             width:60px;
             height:60px;

@@ -21,7 +21,7 @@
                         </h3>
                     </div>
                     <h3 class="mt-10 font-weight-bolder" style="color:black">
-                        Tentukan kebutuhan anda, temukan solusinya
+                        Tentukan kebutuhan anda, temukan solusinya 
                     </h3>
                     <a href="#contactus"
                         class="btn btn-secondary btn-warning mt-10 font-weight-boldest" href="#">
@@ -88,22 +88,24 @@
             <div class="col-md-6 align-self-center">
                 <div class="left-text-content">
                     <div class="section-heading">
-                        <h2>Here You Can Make A contactus Or Just walkin to our service</h2>
+                        <h2>Tertarik menggunakan jasa membangun.id?</h2>
                     </div>
-                    <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend riqsie, namei sollicitudin urna diam, sed commodo purus porta ut.</p>
+                    <p>Kami siap memberikan jasa tukang bangunan terbaik dengan biaya terjangkau. 
+                        Silahkan hubungi kami untuk survay lokasi dan konsultasi. 
+                        Setelah peninjauan, akan kami berikan perhitungan rancangan anggaran biaya proyek anda. </p>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="phone">
                                 <i class="fa fa-phone"></i>
                                 <h4>Phone Numbers</h4>
-                                <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
+                                <span><a href="#">089631844058</a><br><a href="#"> 081230464561</a></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="message">
                                 <i class="fa fa-envelope"></i>
                                 <h4>Emails</h4>
-                                <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
+                                <span><a href="#">membangunidn@gmail.com</a><br><a href="#">membangunidn@gmail.com</a></span>
                             </div>
                         </div>
                     </div>
@@ -112,6 +114,57 @@
             
         </div>
     </div>
+</section>
+
+<section class="container content-space-t-3 content-space-t-lg-5 mt-10">
+   
+        <div class="w-lg-75 text-center mx-lg-auto">
+            <h3 class="font-size-lg-18 font-size-9 font-weight-bold pb-3 line-height-lg">
+                <span class="ml-1 font-weight-bolder">About Us</span><br>
+            </h3>
+        </div>
+  
+        <div class="row gx-3">
+          <div class="col mb-3">
+            <div class="bg-img-start" style="background-image: url({{ url('assets/images/bg-5.jpg') }}); height: 15rem;"></div>
+          </div>
+          <!-- End Col -->
+  
+          <div class="col-3 d-none d-md-block mb-3">
+            <div class="bg-img-start" style="background-image: url({{ url('assets/images/bg-2.jpg') }}); height: 15rem;"></div>
+          </div>
+          <!-- End Col -->
+          
+          <div class="col mb-3">
+            <div class="bg-img-start" style="background-image: url({{ url('assets/images/bg-3.jpg') }}); height: 15rem;"></div>
+          </div>
+          <!-- End Col -->
+  
+          <div class="w-100"></div>
+  
+          <div class="col mb-3 mb-md-0">
+            <div class="bg-img-start" style="background-image: url({{ url('assets/images/bg-11.jpg') }}); height: 15rem;"></div>
+          </div>
+          <!-- End Col -->
+          
+          <div class="col-4 d-none d-md-block mb-3 mb-md-0">
+            <div class="bg-img-start" style="background-image: url({{ url('assets/images/bg-1.jpg') }}); height: 15rem;"></div>
+          </div>
+          <!-- End Col -->
+          
+          <div class="col">
+            <div class="bg-img-start" style="background-image: url({{ url('assets/images/bg-6.jpg') }}); height: 15rem;"></div>
+          </div>
+        </div>
+
+        <div class="row justify-content-lg-between mt-10">
+          <div class="col-lg-12">
+            <p  style="font-size:14px;!important">Membangun.idn merupakan penyedia jasa tukang bangunan dan konstruksi yang mengerjakan proyek bangunan baru maupun renovasi. 
+                Kami menyediakan berbagai layanan jasa, mulai dari bangun rumah baru, perbaikan instalasi listrik, pemasangan keramik, dan lainnya.</p>
+            <p  style="font-size:14px;!important">Membangun.idn akan menjawab kebutuhan anda dengan pelayanan cepat tanggap. 
+                Sampaikan konsep rumah idaman anda dan konsultasikan kebutuhan anda bersama membangun.idn</p>
+          </div>
+        </div>
 </section>
 
 
