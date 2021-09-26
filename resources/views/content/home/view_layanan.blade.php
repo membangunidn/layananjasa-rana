@@ -75,7 +75,7 @@
                                                         </a>
                                                         
                                                         <a href="{{url('pesanlayanan/'.$v->slug)}}" class="_button _button_bottom">
-                                                            Mulai {{ 'Rp. '.number_format($v->hargalayanan, 2) }}
+                                                            Pesan Sekarang
                                                         </a>
                                                     </div>
                                                 </div>

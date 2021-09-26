@@ -49,7 +49,8 @@ class TransaksiController extends Controller
             'harga' => $request->i_harga,
             'status' => 'P',
             'requested_at' => $this->date(),
-            'catatan' => $request->i_catatan
+            'catatan' => $request->i_catatan,
+            'fee_jasa' => $request->i_fee
         ];
 
         Transaksi::insert($record);
@@ -57,7 +58,7 @@ class TransaksiController extends Controller
     
     }
     
-    public function tes(){
-        return view('email.email_ordered');
-    }
+    // public function tes(){
+    //     return view('email.email_ordered');
+    // }
 }

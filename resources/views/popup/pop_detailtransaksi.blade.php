@@ -93,12 +93,36 @@
                 <hr>
             </div>
 
+            {{-- @if ()
+                
+            @endif --}}
+
             <div class="row">
+                <div class="col-lg-5">
+                    <label class="text-bold"><b>Harga Jasa</b></label>
+                </div>
+                <div class="col-lg-7">
+                    {{ 'Rp '.number_format($trx->harga, 2) }}
+                </div>
+
+                @if (Auth::user()->role->role == 'ADMIN')
+                    <div class="col-lg-5">
+                        <label class="text-bold"><b>Fee Admin</b></label>
+                    </div>
+                    <div class="col-lg-7">
+                        {{ 'Rp '.number_format($trx->fee_jasa, 2) }}
+                    </div>
+                @endif
+
                 <div class="col-lg-5">
                     <label class="text-bold"><b>Total Pembayaran</b></label>
                 </div>
                 <div class="col-lg-7">
+                    @if (Auth::user()->role->role == 'ADMIN')
+                    {{ 'Rp '.number_format($trx->harga + $trx->fee_jasa, 2) }}
+                    @else
                     {{ 'Rp '.number_format($trx->harga, 2) }}
+                    @endif
                 </div>
             </div>
         </div>

@@ -24,6 +24,7 @@
 
 <div class="d-flex">
     <div class="container mt-10">
+        @include('components.flashmsg')
         <div class="input-group">
             <input id="search" class="form-control input-sm" placeholder="Cari Kata Kunci " type="text" value="">
         </div>

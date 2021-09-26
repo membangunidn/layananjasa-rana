@@ -35,7 +35,7 @@ class RiwayatController extends Controller
                     </button>';
         })
         ->editColumn('harga', function($trx) {
-            return 'Rp. '.number_format($trx->harga, 2);
+            return 'Rp. '.number_format($trx->harga + $trx->fee_jasa, 2);
         })
         ->addIndexColumn()
         ->rawColumns(['aksi', '_status', 'isaktif'])

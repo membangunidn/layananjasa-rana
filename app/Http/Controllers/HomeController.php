@@ -35,7 +35,7 @@ class HomeController extends Controller {
 
 
         if($kategori == null and $kota != null) {
-            $sql = $query->where(array('l.slug' => $kota, 'lj.isaktif' => 1))->paginate(5);
+            $sql = $query->where(array('l.slug' => $kota, 'lj.isaktif' => 1))->orderby('idlayanan', 'desc')->paginate(6);
             // create session url
             session([
                 'urlsearchparam' => '&qkota='.$kota,
@@ -44,7 +44,7 @@ class HomeController extends Controller {
             ]); 
         }
         if($kategori != null and $kota == null) {
-            $sql = $query->where(array('k.slug' => $kategori, 'lj.isaktif' => 1))->paginate(5);
+            $sql = $query->where(array('k.slug' => $kategori, 'lj.isaktif' => 1))->orderby('idlayanan', 'desc')->paginate(6);
             // create session url
             session([
                 'urlsearchparam' => '&qkategori='.$kota,
@@ -53,7 +53,7 @@ class HomeController extends Controller {
             ]); 
         }
         if($kategori != null and $kota != null) {
-            $sql = $query->where(array('k.slug' => $kategori, 'l.slug' => $kota, 'lj.isaktif' => 1))->paginate(5);
+            $sql = $query->where(array('k.slug' => $kategori, 'l.slug' => $kota, 'lj.isaktif' => 1))->orderby('idlayanan', 'desc')->paginate(6);
             // create session url
             session([
                 'urlsearchparam' => '&qkategori='.$kategori.'&qkota='.$kota,
@@ -62,7 +62,7 @@ class HomeController extends Controller {
             ]);
         }
         else {
-            $sql = $query->paginate(5);
+            $sql = $query->orderby('idlayanan', 'desc')->paginate(6);
             session()->forget(['urlsearchparam', 'qkota', 'qkategori']);
         }
 

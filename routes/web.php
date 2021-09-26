@@ -105,6 +105,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('detail-layananjasa/{slug}', 'layananJasaController@detail');
             Route::put('detail-layananjasa/{slug}', 'layananJasaController@update');
 
+            Route::get('layananjasa/edit/{layananjasa:idlayanan}', 'layananJasaController@edit');
+            Route::put('update-layananjasa/{idlayanan}', 'layananJasaController@update');
+
         });
 
         Route::get('akun/histori-transaksi', 'HistoryTrxController@index');

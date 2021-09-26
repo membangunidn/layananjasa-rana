@@ -184,7 +184,7 @@
                         <div class="d-none d-sm-block col-1">1</div>
                         <div class="col-9 col-sm-5">{{ $trx['layananjasa']['layanan'] }}</div>
                         <div class="d-none d-sm-block col-4">{{ $trx['catatan'] }}</div>
-                        <div class="col-2 text-secondary-d2">{{ number_format($trx['harga'], 2) }}</div>
+                        <div class="col-2 text-secondary-d2">{{ number_format($trx['harga']  + $trx['fee_jasa'], 2) }}</div>
                     </div>
 
                     
@@ -203,16 +203,7 @@
                                 SubTotal
                             </div>
                             <div class="col-5">
-                                <span class="text-120 text-secondary-d1">{{ number_format($trx['harga'], 2) }}</span>
-                            </div>
-                        </div>
-
-                        <div class="row my-2">
-                            <div class="col-7 text-right">
-                                Fee
-                            </div>
-                            <div class="col-5">
-                                <span class="text-110 text-secondary-d1">{{ number_format(25000, 2) }}</span>
+                                <span class="text-120 text-secondary-d1">{{ number_format($trx['harga'] + $trx['fee_jasa'], 2) }}</span>
                             </div>
                         </div>
 
@@ -221,11 +212,13 @@
                                 Total
                             </div>
                             <div class="col-5">
-                                <span class="text-150 text-success-d3">{{ number_format($trx['harga'] + 25000, 2) }}</span>
+                                <span class="text-150 text-success-d3">{{ number_format($trx['harga'] + $trx['fee_jasa'], 2) }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                Harga diatas sudah termasuk dengan PPN dan biaya administrasi
             </div>
         </div>
     </div>

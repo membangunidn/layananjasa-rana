@@ -30,13 +30,12 @@ class LayananJasaController extends Controller
                     WHERE l.iduser = " . Auth::user()->id . " ORDER BY l.idlayanan desc");
         return DataTables::of($jasa)
             ->addColumn('aksi', function ($jasa) {
-                $pilih = "
-                        <button id='tombol_hapus'
-                                class='btn btn-icon btn-light-warning btn-sm mr-2'
+                $pilih = "<a href=".url('http://localhost:8000/seller/layananjasa/edit/'.$jasa->idlayanan)." id='tombol_hapus'
+                                class='btn btn-icon btn-primary btn-sm'
                                 data-id = '".$jasa->idlayanan."'
                                 >
-                            <i class='far fa-trash-alt'></i>
-                        </button>";
+                            <i class='far fa-edit'></i>
+                        </a>";
                 return $pilih;
             })
             ->addColumn('gambar', function ($jasa) {
@@ -154,17 +153,76 @@ class LayananJasaController extends Controller
 
             $param['displaylayanan'] = $image_name;
             LayananJasa::insert($param);
-            return redirect('seller/add-layananjasa')->with('sukses', 'Berhasil menambahkan layanan jasa');
+            return redirect('seller/layananjasa')->with('sukses', 'Berhasil menambahkan layanan jasa');
 
 
         }else{
             LayananJasa::insert($param);
-            return redirect('seller/add-layananjasa')->with('sukses', 'Berhasil menambahkan layanan jasa');
+            return redirect('seller/layananjasa')->with('sukses', 'Berhasil menambahkan layanan jasa');
         }
     }
 
     public function detail(Request $request, $slug) {
         $layanan = LayananJasa::where('slug', $slug)->first();
         Yin::debug($layanan);
+    }
+
+    public function edit(LayananJasa $layananjasa) {
+
+        if($layananjasa->iduser != Auth::user()->id){
+            abort(403);
+        }
+        $kategori = Kategori::orderBy('kategorijasa', 'asc')->get();
+        return view('content.edit_layananjasa', compact('kategori', 'layananjasa'));
+    }
+
+    public function update(Request $request, $idlayanan){
+
+        $validate = [
+            'i_displaylayanan' => 'Display Jasa',
+            'i_layanan' => 'Layanan Jasa',
+            'i_kategori' => 'Kategori Jasa',
+            'i_deskripsilayanan' => 'Deskripsi Layanan',
+            'i_harga' => 'Harga',
+        ];
+        
+        $this->validate($request, [
+            'i_displaylayanan' => 'image|nullable|max:2048',
+            'i_layanan' => 'required',
+            'i_kategori' => 'required',
+            'i_deskripsilayanan' => 'required',
+            'i_harga' => 'required|numeric',
+        ], Yin::Check(), $validate);
+
+        $paramUpdate = [
+            'idkategori' => $request->i_kategori,
+            'layanan' => $request->i_layanan,
+            'deskripsilayanan' => $request->i_deskripsilayanan,
+            'hargalayanan' => $request->i_harga,
+            'isaktif' => $request->i_isaktif == 1 ? 1 : 0,
+            'slug' => Cstm::slug($request->i_layanan),
+            'updated_at' => $this->date()
+        ];
+
+        if($request->file('i_displaylayanan') != null){
+
+            $cekimage = LayananJasa::where('idlayanan', $idlayanan)->first();
+            if(File::exists(public_path('jasa/'.$cekimage->displaylayanan))){
+                File::delete(public_path('jasa/'.$cekimage->displaylayanan));
+            }
+
+            $image = $request->file('i_displaylayanan');
+            $image_name = 'PXL-'.sha1(md5($image.time())).'.'.$image->getClientOriginalExtension();
+            $image->move(\base_path() ."/public/jasa", $image_name);
+
+            $paramUpdate['displaylayanan'] = $image_name;
+            LayananJasa::where('idlayanan', $idlayanan)->update($paramUpdate);
+            return redirect('seller/layananjasa')->with('sukses', 'Berhasil mengubah layanan jasa');
+
+
+        }else{
+            LayananJasa::where('idlayanan', $idlayanan)->update($paramUpdate);
+            return redirect('seller/layananjasa')->with('sukses', 'Berhasil mengubah layanan jasa');
+        }
     }
 }

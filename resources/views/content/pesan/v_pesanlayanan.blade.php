@@ -116,7 +116,7 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-3">Estimasi Harga</div>
                                             <div class="col-lg-9" style="color:red">
-                                                {{ 'Rp. '. number_format($layanan->hargalayanan, 2)}}
+                                                {{ 'Rp. '. number_format($layanan->hargalayanan + $fee, 2)}}
                                             </div>
                                         </div>
                                     </div>
@@ -128,6 +128,7 @@
                             <input type="hidden" name="i_layanan" value="{{$layanan->layanan}}">
                             <input type="hidden" name="i_idpenjual" value="{{$layanan->iduser}}">
                             <input type="hidden" name="i_idlayanan" value="{{$layanan->idlayanan}}">
+                            <input type="hidden" name="i_fee" value="{{$fee}}">
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-warning btn-block mr-2">Pesan Jasa</button>
                             </div>

@@ -5,8 +5,14 @@
     @include('components.v_account')
     <div class="d-flex flex-column-fluid" style="margin-top:auto">
         <div class="container mt-10">
-            
-            <div class="card-body">
+            <div class="alert alert-custom alert-notice alert-light-primary fade show" role="alert">
+                <div class="alert-text">
+                    <b>Anda Dapat melakukan konfirmasi pesanan atau pembayaran ke what'sapp</b>
+                    <br>
+                    <a href="https://web.whatsapp.com/send?phone=6289631844058&amp;text=Hallo mimin, Saya {{ Auth::user()->biodata->namalengkap }} ingin mengonfirmasi pesanan saya" target="_blank">Klik Disini</a>
+                </div>
+            </div>
+            <div>
                 <div class="input-group mb-5">
                     <input id="search" class="form-control input-sm" placeholder="Cari Kata Kunci " type="text" value="">
                 </div>

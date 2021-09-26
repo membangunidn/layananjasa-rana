@@ -21,9 +21,10 @@ class PesanLayananController extends Controller
     public function pesanlayanan($slug){
 
         $layanan = LayananJasa::where('slug', $slug)->first();
+        $fee = 20/100 * $layanan->hargalayanan;
         if($layanan) {
             $lokasi = Lokasi::all();
-            return view('content.pesan.v_pesanlayanan', compact('layanan', 'lokasi'));
+            return view('content.pesan.v_pesanlayanan', compact('layanan', 'lokasi', 'fee'));
         }
         else {
             abort(404);
